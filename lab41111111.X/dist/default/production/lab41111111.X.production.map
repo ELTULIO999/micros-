@@ -1,0 +1,98 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Tue Aug 18 18:50:56 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                 ISR_VECT       code   0x000004    program   0x000044
+                MAIN_PROG       code   0x000100    program   0x0000d6
+.config_2007_BUILD/DEFAULT/PRODUCTION/LAB__4.       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/LAB__4.       code   0x002008    program   0x000002
+                  GPR_VAR      udata   0x000020       data   0x00000c
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000025      
+                            0x000100    0x00016a      
+                            0x002007    0x002008      
+            146 out of 8455 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+              CONFIG_FLAG   0x000136    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                CONFIG_IO   0x00014a    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+            CONFIG_TIMER0   0x000129    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+               DISPLAY_D1   0x000119    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+               DISPLAY_D2   0x000122    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                      ISR   0x000007    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                     LOOP   0x00010b    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    MEN_1   0x000142    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                      POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                     PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                     RSET   0x000112    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                  SEV_SEG   0x000014    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   SUMA_1   0x00013a    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                TIMER1SEG   0x000110    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+          _MAIN_PROG_0116   0x000116    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+          _MAIN_PROG_013F   0x00013f    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+          _MAIN_PROG_0147   0x000147    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    CONT1   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    CONT2   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    CONT3   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                 CONTADOR   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+              CONTADOR_1S   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                 CONTDE_4   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   CONT_A   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   CONT_B   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+              STATUS_TEMP   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    TEMP1   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    TEMP2   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   W_TEMP   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                      ISR   0x000007    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                      POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                  SEV_SEG   0x000014    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                     LOOP   0x00010b    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                TIMER1SEG   0x000110    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                     RSET   0x000112    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+          _MAIN_PROG_0116   0x000116    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+               DISPLAY_D1   0x000119    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+               DISPLAY_D2   0x000122    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+            CONFIG_TIMER0   0x000129    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+              CONFIG_FLAG   0x000136    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   SUMA_1   0x00013a    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+          _MAIN_PROG_013F   0x00013f    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    MEN_1   0x000142    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+          _MAIN_PROG_0147   0x000147    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                CONFIG_IO   0x00014a    program     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    CONT1   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    CONT2   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   CONT_A   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   CONT_B   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    CONT3   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+              CONTADOR_1S   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                 CONTADOR   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    TEMP1   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                    TEMP2   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                 CONTDE_4   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+                   W_TEMP   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+              STATUS_TEMP   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\lab41111111.X\LAB__4.asm
+
+
