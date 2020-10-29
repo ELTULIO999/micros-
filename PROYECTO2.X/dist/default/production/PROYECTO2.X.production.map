@@ -1,0 +1,150 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Sat Sep 19 21:19:50 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                  ISR_VEC       code   0x000004    program   0x00009e
+                MAIN_PROG       code   0x000100    program   0x0001e0
+.config_2007_BUILD/DEFAULT/PRODUCTION/MES.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/MES.O       code   0x002008    program   0x000002
+                  GPR_VAR      udata   0x000020       data   0x000014
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000052      
+                            0x000100    0x0001ef      
+                            0x002007    0x002008      
+            324 out of 8455 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                      ALM   0x000119    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     CERO   0x000136    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              CONFIG_FLAG   0x00015f    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONFIG_IO   0x0001b3    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            CONFIG_TIMER0   0x00016d    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            CONFIG_TIMER1   0x00017a    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            CONFIG_TIMER2   0x000188    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    DELAY   0x0001df    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+               DISPLAY_GE   0x000195    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                FUE_TIMR0   0x000015    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                FUE_TIMR1   0x00001c    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                FUE_TIMR2   0x000023    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      HDP   0x00012a    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                HORARESET   0x00013a    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    HORAS   0x000038    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            INCREMENTUNOS   0x00011b    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      ISR   0x000008    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     LOOP   0x000116    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                 PISHLEDS   0x000147    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          REGULADOR_TIMER   0x00013f    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  SEV_SEG   0x000027    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  SHOWOFF   0x00014b    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   SHOWON   0x00014e    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                TIMER1_2S   0x000157    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  TOGGLE2   0x000151    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   TOG_00   0x000155    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   TOG_11   0x000153    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     VAP1   0x000144    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     VAP2   0x00015c    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_012D   0x00012d    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_0196   0x000196    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_019E   0x00019e    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_01A6   0x0001a6    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    CONT1   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    CONT2   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONTADOR1   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONTADOR2   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    CONTF   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONTHORAS   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              CONTHORAS_H   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  CONTSEG   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     ESPE   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  NIBBLEH   0x00002e       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  NIBBLEL   0x00002f       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                NIBBLE_HH   0x000031       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                NIBBLE_HL   0x000030       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              STATUS_TEMP   0x000033       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     TEMP   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    TEMP1   0x00002c       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    TEMP2   0x00002d       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                TEMPHORAS   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              TEMPHORAS_H   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   W_TEMP   0x000032       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      ISR   0x000008    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                FUE_TIMR0   0x000015    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                FUE_TIMR1   0x00001c    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                FUE_TIMR2   0x000023    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  SEV_SEG   0x000027    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    HORAS   0x000038    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     LOOP   0x000116    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      ALM   0x000119    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            INCREMENTUNOS   0x00011b    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                      HDP   0x00012a    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_012D   0x00012d    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     CERO   0x000136    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                HORARESET   0x00013a    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          REGULADOR_TIMER   0x00013f    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     VAP1   0x000144    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                 PISHLEDS   0x000147    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  SHOWOFF   0x00014b    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   SHOWON   0x00014e    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  TOGGLE2   0x000151    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   TOG_11   0x000153    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   TOG_00   0x000155    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                TIMER1_2S   0x000157    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     VAP2   0x00015c    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              CONFIG_FLAG   0x00015f    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            CONFIG_TIMER0   0x00016d    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            CONFIG_TIMER1   0x00017a    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+            CONFIG_TIMER2   0x000188    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+               DISPLAY_GE   0x000195    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_0196   0x000196    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_019E   0x00019e    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+          _MAIN_PROG_01A6   0x0001a6    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONFIG_IO   0x0001b3    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    DELAY   0x0001df    program     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    CONTF   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  CONTSEG   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    CONT1   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    CONT2   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONTADOR1   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONTADOR2   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     TEMP   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                CONTHORAS   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              CONTHORAS_H   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                TEMPHORAS   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              TEMPHORAS_H   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                     ESPE   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    TEMP1   0x00002c       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                    TEMP2   0x00002d       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  NIBBLEH   0x00002e       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                  NIBBLEL   0x00002f       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                NIBBLE_HL   0x000030       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                NIBBLE_HH   0x000031       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+                   W_TEMP   0x000032       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+              STATUS_TEMP   0x000033       data     static C:\Users\julit\Documents\GitHub\micros-\PROYECTO2.X\MES.asm
+
+

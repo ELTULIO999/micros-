@@ -1,0 +1,1429 @@
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;*******************************************************************************
+                      00002 ;                                                                              *
+                      00003 ;    Filename: julio lopez                                                     *
+                      00004 ;    Date:     9/29/2020                                                        *
+                      00005 ;    File Version:                                                             *
+                      00006 ;    Author:                                                                   *
+                      00007 ;    Company:                                                                  *
+                      00008 ;    Description:                                                              *
+                      00009 ;                            HORAS  CON ITERMITENTES                                                   *
+                      00010 ;*******************************************************************************
+                      00011 ;
+                      00012 ;    TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR
+                      00013     
+                      00014     #INCLUDE "p16f887.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Nov 22 2017
+                      00005 ;  MPASM PIC16F887 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00810         LIST
+                      00015 ; CONFIG1
+                      00016 ; __config 0xF0F1
+2007   20D4           00017  __CONFIG _CONFIG1, _FOSC_INTRC_NOCLKOUT & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _CPD_OFF & _B
+                            OREN_OFF & _IESO_OFF & _FCMEN_OFF & _LVP_OFF
+                      00018 ; CONFIG2
+                      00019 ; __config 0xFFFF
+2008   3FFF           00020  __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+                      00021  ;-----------------------------------------------------------------------------
+                      00022  ;-----------------------------------------------------------------------------
+Warning[207]: Found label after column 1. (GPR_VAR)
+                      00023  GPR_VAR  UDATA 
+Warning[207]: Found label after column 1. (CONT)
+0000                  00024  CONT           RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CONT1)
+0001                  00025  CONT1          RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CONT2)
+0002                  00026  CONT2          RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (TEMP)
+0003                  00027  TEMP           RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (TEMP1)
+0004                  00028  TEMP1          RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CLIF)
+0005                  00029  CLIF           RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (W_TEMP)
+0006                  00030  W_TEMP         RES 1
+Warning[207]: Found label after column 1. (STATUS_TEMP)
+0007                  00031  STATUS_TEMP    RES 1
+Warning[207]: Found label after column 1. (CONV_FLAGAS)
+0008                  00032  CONV_FLAGAS    RES 1
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00033      
+Warning[207]: Found label after column 1. (N1X)
+0009                  00034  N1X             RES 1
+Warning[207]: Found label after column 1. (N1Y)
+000A                  00035  N1Y             RES 1
+                      00036              
+Warning[207]: Found label after column 1. (XX)
+000B                  00037  XX              RES 1
+Warning[207]: Found label after column 1. (YY)
+000C                  00038  YY              RES 1
+Warning[207]: Found label after column 1. (RAM)
+000D                  00039  RAM              RES 1
+                      00040              
+Warning[207]: Found label after column 1. (QUOX)
+000E                  00041  QUOX            RES 1
+Warning[207]: Found label after column 1. (QUO1X)
+000F                  00042  QUO1X           RES 1
+Warning[207]: Found label after column 1. (QUOY)
+0010                  00043  QUOY            RES 1
+Warning[207]: Found label after column 1. (QUO1Y)
+0011                  00044  QUO1Y           RES 1
+Warning[207]: Found label after column 1. (QUO)
+0012                  00045  QUO             RES 1
+Warning[207]: Found label after column 1. (QUO1)
+0013                  00046  QUO1            RES 1
+                      00047             
+Warning[207]: Found label after column 1. (QUOS)
+0014                  00048  QUOS            RES 1
+Warning[207]: Found label after column 1. (QUOS1)
+0015                  00049  QUOS1            RES 1
+Warning[207]: Found label after column 1. (QUOS2)
+0016                  00050  QUOS2            RES 1
+Warning[207]: Found label after column 1. (QUOS3)
+0017                  00051  QUOS3            RES 1
+                      00052             
+                      00053             
+Warning[207]: Found label after column 1. (NUM)
+0018                  00054  NUM             RES 1
+Warning[207]: Found label after column 1. (NUM2)
+0019                  00055  NUM2            RES 1
+                      00056            
+Warning[207]: Found label after column 1. (SEM)
+001A                  00057  SEM             RES 1
+                      00058          
+                      00059 ;******************************************************************************
+                      00060 ;******************************************************************************
+Warning[207]: Found label after column 1. (RES_VECT)
+                      00061          RES_VECT  CODE    0x0000            ; processor reset vector
+0000   2???           00062  GOTO    START                   ; go to beginning of program
+                      00063 ;**************TODO ADD INTERRUPTS HERE IF USED********************************
+                      00064 ISR_VEC CODE 0X004
+Warning[207]: Found label after column 1. (PUSH)
+0004                  00065  PUSH:
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0004   138B           00066     BCF   INTCON, GIE
+0005   00??           00067     MOVWF W_TEMP
+0006   0E03           00068     SWAPF STATUS, W
+0007   00??           00069     MOVWF STATUS_TEMP
+Warning[207]: Found label after column 1. (ISR)
+0008                  00070  ISR:
+0008   188C           00071     BTFSC PIR1, TMR2IF
+0009   2???           00072     CALL FUE_TIMR2
+000A   180C           00073     BTFSC PIR1, TMR1IF
+000B   2???           00074     CALL FUE_TIMR1  
+000C   1D0B           00075     BTFSS INTCON, T0IF 
+000D   2???           00076     GOTO POP    
+000E   2???           00077     CALL FUE_TIMR0
+000F   1A8C           00078     BTFSC PIR1, RCIF
+0010   2???           00079     CALL SAVEGG
+Warning[207]: Found label after column 1. (POP)
+0011                  00080  POP:
+0011   0E??           00081     SWAPF STATUS_TEMP, W
+0012   0083           00082     MOVWF STATUS 
+0013   0E??           00083     SWAPF W_TEMP, F
+0014   0E??           00084     SWAPF W_TEMP, W
+0015   178B           00085     BSF   INTCON, GIE 
+Warning[203]: Found opcode in column 1. (RETFIE)
+0016   0009           00086 RETFIE
+                      00087 ;//////////////////////////////SUBRUTINAS DE TIMERS/////////////////////////////
+0017                  00088 FUE_TIMR0
+0017   1D0B           00089     BTFSS INTCON, T0IF 
+0018   2???           00090     GOTO POP
+0019   3006           00091     MOVLW .6
+001A   0081           00092     MOVWF TMR0
+001B   110B           00093     BCF INTCON, T0IF
+001C   08??           00094     MOVF CLIF,W
+001D   3903           00095     ANDLW   B'00000011'
+001E   0782           00096     ADDWF   PCL, F
+001F   2???           00097     GOTO DISPLAY_D1
+0020   2???           00098     GOTO DISPLAY_D2
+0021   2???           00099     GOTO DISPLAY_D12
+0022   2???           00100     GOTO DISPLAY_D22
+0023   0008           00101     RETURN 
+                      00102 
+Warning[207]: Found label after column 1. (DISPLAY_D1)
+0024                  00103     DISPLAY_D1
+0024   1308           00104     BCF   PORTD,RD6
+0025   1388           00105     BCF   PORTD,RD7
+0026   1207           00106     BCF   PORTC,RC4
+0027   1287           00107     BCF   PORTC,RC5
+0028   08??           00108     MOVFW QUOS
+0029   2???           00109     CALL SEV_SEG
+002A   0086           00110     MOVWF PORTB 
+002B   1788           00111     BSF   PORTD,RD7
+002C   0A??           00112     INCF    CLIF, F
+002D   0008           00113     RETURN 
+                      00114 
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[207]: Found label after column 1. (DISPLAY_D2)
+002E                  00115     DISPLAY_D2
+002E   1308           00116     BCF   PORTD,RD6
+002F   1388           00117     BCF   PORTD,RD7
+0030   1207           00118     BCF   PORTC,RC4
+0031   1287           00119     BCF   PORTC,RC5
+0032   08??           00120     MOVFW QUOS1
+0033   2???           00121     CALL  SEV_SEG
+0034   0086           00122     MOVWF PORTB 
+0035   1708           00123     BSF   PORTD,RD6
+0036   0A??           00124     INCF    CLIF, F
+0037   0008           00125     RETURN 
+                      00126 
+Warning[207]: Found label after column 1. (DISPLAY_D12)
+0038                  00127     DISPLAY_D12
+0038   1308           00128     BCF   PORTD,RD6
+0039   1388           00129     BCF   PORTD,RD7
+003A   1207           00130     BCF   PORTC,RC4
+003B   1287           00131     BCF   PORTC,RC5
+003C   08??           00132     MOVFW QUOS2
+003D   2???           00133     CALL SEV_SEG
+003E   0086           00134     MOVWF PORTB 
+003F   1607           00135     BSF   PORTC,RC4
+0040   0A??           00136     INCF    CLIF, F
+0041   0008           00137     RETURN 
+                      00138     
+Warning[207]: Found label after column 1. (DISPLAY_D22)
+0042                  00139     DISPLAY_D22
+0042   1308           00140     BCF   PORTD,RD6
+0043   1388           00141     BCF   PORTD,RD7
+0044   1207           00142     BCF   PORTC,RC4
+0045   1287           00143     BCF   PORTC,RC5
+0046   08??           00144     MOVFW QUOS3
+0047   2???           00145     CALL  SEV_SEG
+0048   0086           00146     MOVWF PORTB 
+0049   1687           00147     BSF   PORTC,RC5
+004A   01??           00148     CLRF    CLIF
+004B   0008           00149     RETURN 
+                      00150  
+004C                  00151 FUE_TIMR1
+004C   30CF           00152     MOVLW .207  ;PRESCALER HIGH 
+004D   008F           00153     MOVWF TMR1H
+004E   3026           00154     MOVLW .38  ;PRESCALER LOW
+004F   008E           00155     MOVWF TMR1L
+0050   100C           00156     BCF  PIR1, TMR1IF
+0051   0008           00157     RETURN 
+0052                  00158 FUE_TIMR2
+0052   0191           00159     CLRF TMR2
+0053   108C           00160     BCF PIR1, TMR2IF
+                      00161     ;BTFSC   PIR1, TXIF
+                      00162     ;CALL    SEND
+0054   0008           00163     RETURN 
+0055                  00164 SAVEGG:    
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0055   08??           00165     MOVF RAM ,W
+0056   3903           00166     ANDLW   B'00000011'
+0057   0782           00167     ADDWF   PCL, F
+0058   2???           00168     GOTO X01
+0059   2???           00169     GOTO X10
+005A   2???           00170     GOTO Y01
+005B   2???           00171     GOTO Y10
+005C   0008           00172     RETURN 
+                      00173     
+                      00174 
+005D                  00175 X01
+005D   3030           00176     MOVLW 0X30
+005E   021A           00177     SUBWF RCREG ,W
+005F   00??           00178     MOVWF QUOS
+Message[305]: Using default destination of 1 (file).
+0060   0A??           00179     INCF RAM
+0061   0008           00180     RETURN
+                      00181     
+0062                  00182 X10
+0062   3030           00183     MOVLW 0X30
+0063   021A           00184     SUBWF RCREG ,W
+0064   00??           00185     MOVWF QUOS1
+Message[305]: Using default destination of 1 (file).
+0065   0A??           00186     INCF RAM
+0066   0008           00187     RETURN
+0067                  00188 Y01  
+                      00189     
+0067   3030           00190     MOVLW 0X30
+0068   021A           00191     SUBWF RCREG ,W
+0069   00??           00192     MOVWF QUOS2
+Message[305]: Using default destination of 1 (file).
+006A   0A??           00193     INCF RAM
+006B   0008           00194     RETURN
+006C                  00195 Y10  
+                      00196    
+006C   3030           00197     MOVLW 0X30
+006D   021A           00198     SUBWF RCREG ,W
+006E   00??           00199     MOVWF QUOS3
+006F   01??           00200     CLRF RAM
+0070   0008           00201     RETURN
+Warning[203]: Found opcode in column 1. (RETURN)
+0071   0008           00202 RETURN 
+                      00203  ;/////////////////////////////////////////////////////////////////////////////  
+                      00204          
+0072                  00205 SEV_SEG:
+0072   0782           00206     ADDWF PCL,F
+0073   3477           00207     RETLW B'01110111';0
+0074   3414           00208     RETLW B'00010100';1
+0075   34B3           00209     RETLW B'10110011';2
+0076   34B6           00210     RETLW B'10110110';3
+0077   34D4           00211     RETLW B'11010100';4
+0078   34E6           00212     RETLW B'11100110';5
+0079   34E7           00213     RETLW B'11100111';6
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+007A   3434           00214     RETLW B'00110100';7
+007B   34F7           00215     RETLW B'11110111';8
+007C   34F4           00216     RETLW B'11110100';9                                                                                 
+                                                                         
+007D   34F5           00217     RETLW B'11110101';A
+007E   34C7           00218     RETLW B'11000111';b
+007F   3463           00219     RETLW B'01100011';C
+0080   3497           00220     RETLW B'10010111';d
+0081   34E3           00221     RETLW B'11100011';E
+0082   34E1           00222     RETLW B'11100001';F
+                      00223     
+                      00224 ;-------------------------------------------------------------------
+                      00225     
+Warning[207]: Found label after column 1. (MAIN_PROG)
+                      00226     MAIN_PROG CODE       0X200   
+0200                  00227 START
+Warning[203]: Found opcode in column 1. (CALL)
+0200   2???           00228 CALL    CONFIG_OSC
+Warning[203]: Found opcode in column 1. (BCF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0201   1381           00229 BCF     OPTION_REG , 7
+Warning[203]: Found opcode in column 1. (CALL)
+0202   2???           00230 CALL    CONFIG_IO
+Warning[203]: Found opcode in column 1. (CALL)
+0203   2???           00231 CALL    CONFIG_TIMER0
+Warning[203]: Found opcode in column 1. (CALL)
+0204   2???           00232 CALL    CONFIG_TIMER1
+Warning[203]: Found opcode in column 1. (CALL)
+0205   2???           00233 CALL    CONFIG_TIMER2
+Warning[203]: Found opcode in column 1. (CALL)
+0206   2???           00234 CALL    CONFIG_FLAG
+Warning[203]: Found opcode in column 1. (CALL)
+0207   2???           00235 CALL    CONFIG_ADC
+Warning[203]: Found opcode in column 1. (CALL)
+0208   2???           00236 CALL    CONFIG_MASTER
+                      00237 
+                      00238  
+Warning[205]: Found directive in column 1. (BANKSEL)
+0209   1283 1303      00239 BANKSEL PORTA 
+Warning[203]: Found opcode in column 1. (CLRF)
+020B   01??           00240 CLRF    CONT
+Warning[203]: Found opcode in column 1. (CLRF)
+020C   01??           00241 CLRF    CONT1
+Warning[203]: Found opcode in column 1. (CLRF)
+020D   01??           00242 CLRF    CONT2
+Warning[203]: Found opcode in column 1. (CLRF)
+020E   01??           00243 CLRF    TEMP
+Warning[203]: Found opcode in column 1. (CLRF)
+020F   01??           00244 CLRF    TEMP1
+Warning[203]: Found opcode in column 1. (CLRF)
+0210   01??           00245 CLRF    W_TEMP       
+Warning[203]: Found opcode in column 1. (CLRF)
+0211   01??           00246 CLRF    STATUS_TEMP  
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (CLRF)
+0212   01??           00247 CLRF    CLIF
+Warning[203]: Found opcode in column 1. (CLRF)
+0213   01??           00248 CLRF    N1X
+Warning[203]: Found opcode in column 1. (CLRF)
+0214   01??           00249 CLRF    N1Y
+Warning[203]: Found opcode in column 1. (CLRF)
+0215   01??           00250 CLRF    QUOX
+Warning[203]: Found opcode in column 1. (CLRF)
+0216   01??           00251 CLRF    QUO1X
+Warning[203]: Found opcode in column 1. (CLRF)
+0217   01??           00252 CLRF    QUOY
+Warning[203]: Found opcode in column 1. (CLRF)
+0218   01??           00253 CLRF    QUO1Y
+Warning[203]: Found opcode in column 1. (CLRF)
+0219   01??           00254 CLRF    QUOS
+Warning[203]: Found opcode in column 1. (CLRF)
+021A   01??           00255 CLRF    QUOS1
+Warning[203]: Found opcode in column 1. (CLRF)
+021B   01??           00256 CLRF    QUOS2
+Warning[203]: Found opcode in column 1. (CLRF)
+021C   01??           00257 CLRF    QUOS3
+Warning[203]: Found opcode in column 1. (CLRF)
+021D   01??           00258 CLRF    SEM
+Warning[203]: Found opcode in column 1. (CLRF)
+021E   01??           00259 CLRF    XX
+Warning[203]: Found opcode in column 1. (CLRF)
+021F   01??           00260 CLRF    YY
+Warning[203]: Found opcode in column 1. (CLRF)
+0220   01??           00261 CLRF    CONV_FLAGAS 
+Warning[203]: Found opcode in column 1. (CLRF)
+0221   01??           00262 CLRF    RAM
+Warning[203]: Found opcode in column 1. (GOTO)
+0222   2???           00263 GOTO    LOOP
+                      00264  
+                      00265 ;------------------------------------------------------
+0223                  00266 LOOP:
+0223   2???           00267    CALL CONVERTX
+0224   2???           00268    CALL CHANGE_X
+0225   2???           00269    CALL SENDX
+0226   2???           00270    CALL CONVERTY
+0227   2???           00271    CALL CHANGE_Y
+0228   2???           00272    CALL SENDY
+                      00273    
+0229   2???           00274    GOTO LOOP
+                      00275 
+                      00276 
+                      00277 ;----------------------------------------------------
+                      00278 
+                      00279    
+022A                  00280 NUM_TO_VOLTS:
+022A   00??           00281     MOVWF   NUM
+022B   01??           00282     CLRF    QUO
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+022C   01??           00283     CLRF    QUO1
+022D   3033           00284     MOVLW .51  
+Message[305]: Using default destination of 1 (file).
+022E   0A??           00285     INCF QUO
+Message[305]: Using default destination of 1 (file).
+022F   02??           00286     SUBWF NUM
+0230   1803           00287     BTFSC STATUS,C
+0231   2???           00288     GOTO $-4
+Message[305]: Using default destination of 1 (file).
+0232   03??           00289     DECF QUO
+0233   07??           00290     ADDWF NUM,W
+0234   00??           00291     MOVWF NUM2     
+0235   3005           00292     MOVLW .5
+Message[305]: Using default destination of 1 (file).
+0236   0A??           00293     INCF QUO1
+Message[305]: Using default destination of 1 (file).
+0237   02??           00294     SUBWF NUM2
+0238   1803           00295     BTFSC STATUS,C
+0239   2???           00296     GOTO $-4
+Message[305]: Using default destination of 1 (file).
+023A   03??           00297     DECF QUO1
+023B   0008           00298     RETURN 
+023C                  00299 CHANGE_X:
+023C   08??           00300     MOVF    N1X, W
+023D   2???           00301     CALL    NUM_TO_VOLTS
+023E   08??           00302     MOVF    QUO, W
+023F   00??           00303     MOVWF   QUOX
+0240   08??           00304     MOVF    QUO1, W
+0241   00??           00305     MOVWF   QUO1X
+0242   0008           00306     RETURN 
+0243                  00307 CHANGE_Y:
+0243   08??           00308     MOVF    N1Y, W
+0244   2???           00309     CALL    NUM_TO_VOLTS
+0245   08??           00310     MOVF    QUO, W
+0246   00??           00311     MOVWF   QUOY
+0247   08??           00312     MOVF    QUO1, W
+0248   00??           00313     MOVWF   QUO1Y
+0249   0008           00314     RETURN  
+024A                  00315 CONVERTX:
+024A   149F           00316     BSF ADCON0,GO
+024B   189F           00317     BTFSC ADCON0,GO
+024C   2???           00318     GOTO $-1
+024D   081E           00319     MOVF ADRESH, W
+024E   00??           00320     MOVWF N1X
+024F   151F           00321     BSF ADCON0, CHS0
+0250   2???           00322     CALL DELAY
+Warning[203]: Found opcode in column 1. (RETURN)
+0251   0008           00323 RETURN     
+0252                  00324 CONVERTY:       
+0252   149F           00325     BSF ADCON0,GO
+0253   189F           00326     BTFSC ADCON0,GO
+0254   2???           00327     GOTO$-1
+0255   081E           00328     MOVF ADRESH, W
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0256   00??           00329     MOVWF N1Y
+0257   111F           00330     BCF ADCON0, CHS0
+0258   2???           00331     CALL DELAY
+Warning[203]: Found opcode in column 1. (RETURN)
+0259   0008           00332 RETURN     
+025A                  00333 SENDX:
+025A   1E0C           00334    BTFSS PIR1,TXIF   ;PRIMERO VALOR
+025B   2???           00335    GOTO  $-1
+025C   2???           00336    CALL  DELAY_10MS
+025D   08??           00337    MOVFW QUOX
+025E   3E30           00338    ADDLW 0X30
+025F   0099           00339    MOVWF TXREG
+0260   1E0C           00340    BTFSS PIR1,TXIF   ;SEGUNDO VALOR
+0261   2???           00341    GOTO  $-1
+0262   2???           00342    CALL  DELAY_10MS
+0263   08??           00343    MOVFW QUO1X
+0264   3E30           00344    ADDLW 0X30
+0265   0099           00345    MOVWF TXREG
+0266   1E0C           00346    BTFSS PIR1,TXIF   ;coma
+0267   2???           00347    GOTO  $-1
+0268   2???           00348    CALL  DELAY_10MS
+0269   302C           00349    MOVLW 0X2C 
+026A   0099           00350    MOVWF TXREG
+026B   0008           00351    RETURN 
+026C                  00352 SENDY:
+026C   1283 1303      00353    BANKSEL TXREG 
+026E   1E0C           00354    BTFSS PIR1,TXIF   ;PRIMERO VALOR
+026F   2???           00355    GOTO  $-1
+0270   2???           00356    CALL  DELAY_10MS
+0271   08??           00357    MOVFW QUOY
+0272   3E30           00358    ADDLW 0X30
+0273   0099           00359    MOVWF TXREG
+0274   1E0C           00360    BTFSS PIR1,TXIF   ;SEGUNDO VALOR
+0275   2???           00361    GOTO  $-1
+0276   2???           00362    CALL  DELAY_10MS
+0277   08??           00363    MOVFW QUO1Y
+0278   3E30           00364    ADDLW 0X30
+0279   0099           00365    MOVWF TXREG
+027A   1E0C           00366    BTFSS PIR1,TXIF   ;NEXT LINE 
+027B   2???           00367    GOTO  $-1
+027C   2???           00368    CALL  DELAY_10MS
+027D   300A           00369    MOVLW .10
+027E   0099           00370    MOVWF TXREG
+Warning[203]: Found opcode in column 1. (RETURN)
+027F   0008           00371 RETURN 
+0280                  00372 CONFIG_MASTER:
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0280   1218           00373         BCF TXSTA, SYNC
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0281   1518           00374         BSF TXSTA, BRGH
+0282   1683 1703      00375         BANKSEL BAUDCTL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0284   1187           00376         BCF BAUDCTL, BRG16
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0285   1683 1303      00377         BANKSEL SPBRG
+0287   3019           00378         MOVLW .25
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0288   0099           00379         MOVWF SPBRG
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0289   019A           00380         CLRF SPBRGH
+028A   1283 1303      00381         BANKSEL RCSTA
+028C   1798           00382         BSF RCSTA, SPEN
+028D   1618           00383         BSF RCSTA, CREN ; en ON en on para 
+028E   1318           00384         BCF RCSTA, RX9
+028F   1683 1303      00385         BANKSEL TXSTA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0291   1318           00386         BCF TXSTA, TX9
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0292   1698           00387         BSF TXSTA, TXEN
+0293   1283 1303      00388         BANKSEL PORTD
+0295   0188           00389         CLRF PORTD
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0296   168C           00390         BSF PIE1,RCIE
+0297   0008           00391  RETURN 
+                      00392  ;------------------------------------------------------------------------------
+                      00393  ;------------------------------------------------------------------------------
+                      00394  ;------------------------------------------------------------------------------
+Warning[207]: Found label after column 1. (CONFIG_OSC)
+0298                  00395  CONFIG_OSC:
+0298   1683 1303      00396     BANKSEL OSCCON
+029A   3061           00397     MOVLW B'01100001'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+029B   008F           00398     MOVWF OSCCON
+029C   0008           00399     RETURN
+029D                  00400 CONFIG_ADC:
+029D   1283 1303      00401     BANKSEL PORTA
+029F   139F           00402     BCF ADCON0, ADCS1
+02A0   171F           00403     BSF ADCON0, ADCS0           ; FOSC/8 RELOJ TAD
+02A1   129F           00404     BCF ADCON0, CHS3            ; CANAL 0 PARA LA CONVERSION
+02A2   121F           00405     BCF ADCON0, CHS2
+02A3   119F           00406     BCF ADCON0, CHS1
+02A4   111F           00407     BCF ADCON0, CHS0    
+02A5   1683 1303      00408     BANKSEL TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02A7   139F           00409     BCF ADCON1, ADFM            ; JUSTIFICACIÓN A LA IZQUIERDA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02A8   129F           00410     BCF ADCON1, VCFG1           ; VSS COMO REFERENCIA VREF-
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02A9   121F           00411     BCF ADCON1, VCFG0           ; VDD COMO REFERENCIA VREF+
+02AA   1283 1303      00412     BANKSEL PORTA
+02AC   141F           00413     BSF ADCON0, ADON            ; ENCIENDO EL MÓDULO ADC
+Warning[203]: Found opcode in column 1. (RETURN)
+02AD   0008           00414 RETURN
+                      00415     
+                      00416     
+Warning[207]: Found label after column 1. (CONFIG_FLAG)
+02AE                  00417  CONFIG_FLAG:
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+02AE   178B           00418  BSF  INTCON, GIE
+02AF   168B           00419  BSF  INTCON, T0IE
+02B0   110B           00420  BCF  INTCON, T0IF 
+02B1   1683 1303      00421  BANKSEL TRISA 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02B3   140C           00422  BSF     PIE1, TMR1IE
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02B4   148C           00423  BSF     PIE1, TMR2IE 
+02B5   1283 1303      00424  BANKSEL PORTA
+02B7   178B           00425  BSF     INTCON, GIE
+02B8   170B           00426  BSF     INTCON, PEIE
+02B9   100C           00427  BCF     PIR1, TMR1IF
+02BA   108C           00428  BCF     PIR1, TMR2IF 
+02BB   0008           00429  RETURN 
+                      00430  
+Warning[207]: Found label after column 1. (CONFIG_TIMER0)
+02BC                  00431  CONFIG_TIMER0:
+02BC   1683 1303      00432  BANKSEL TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02BE   1281           00433  BCF OPTION_REG , T0CS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02BF   1181           00434  BCF OPTION_REG , PSA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02C0   1101           00435  BCF OPTION_REG , PS2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02C1   1481           00436  BSF OPTION_REG , PS1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02C2   1001           00437  BCF OPTION_REG , PS0
+02C3   1283 1303      00438  BANKSEL PORTA
+02C5   3006           00439  MOVLW   .6
+02C6   0081           00440  MOVWF   TMR0
+02C7   110B           00441  BCF INTCON, T0IF
+02C8   0008           00442  RETURN
+02C9                  00443 CONFIG_TIMER1:
+02C9   1283 1303      00444  BANKSEL   PORTA
+02CB   1310           00445  BCF T1CON, TMR1GE
+02CC   1690           00446  BSF T1CON, T1CKPS1 ;PRESCALER 
+02CD   1610           00447  BSF T1CON, T1CKPS0 ;PRESCALER 
+02CE   1190           00448  BCF T1CON, T1OSCEN ;TIMER INTERNO  
+02CF   1090           00449  BCF T1CON, TMR1CS 
+02D0   1410           00450  BSF T1CON, TMR1ON 
+02D1   30CF           00451  MOVLW .207  ;PRESCALER HIGH 
+02D2   008F           00452  MOVWF TMR1H
+02D3   3026           00453  MOVLW .38  ;PRESCALER LOW
+02D4   008E           00454  MOVWF TMR1L
+02D5   100C           00455  BCF PIR1, TMR1IF
+Warning[203]: Found opcode in column 1. (RETURN)
+02D6   0008           00456 RETURN 
+                      00457  
+02D7                  00458 CONFIG_TIMER2:
+02D7   1283 1303      00459  BANKSEL PORTA
+02D9   3047           00460  MOVLW  B'001000111' ;B'00000101'
+02DA   0092           00461  MOVWF   T2CON
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+02DB   1683 1303      00462  BANKSEL TRISA
+02DD   30FA           00463  MOVLW   .250
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02DE   0092           00464  MOVWF   PR2
+02DF   1283 1303      00465  BANKSEL PORTA
+02E1   0191           00466  CLRF    TMR2
+02E2   108C           00467  BCF     PIR1, TMR2IF
+Warning[203]: Found opcode in column 1. (RETURN)
+02E3   0008           00468 RETURN 
+                      00469  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                      00470  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                      00471  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+02E4                  00472 CONFIG_IO
+02E4   1683 1303      00473     BANKSEL TRISA
+02E6   3003           00474     MOVLW   B'00000011'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02E7   0085           00475     MOVWF   TRISA
+02E8   1283 1303      00476     BANKSEL PORTA
+02EA   0185           00477     CLRF    PORTA
+02EB   1683 1703      00478     BANKSEL ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02ED   0188           00479     CLRF    ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02EE   0189           00480     CLRF    ANSELH 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02EF   1408           00481     BSF ANSEL, ANS0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02F0   1488           00482     BSF ANSEL, ANS1
+02F1   1683 1303      00483     BANKSEL TRISB
+02F3   3000           00484     MOVLW   B'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02F4   0086           00485     MOVWF   TRISB
+02F5   1283 1303      00486     BANKSEL PORTB
+02F7   0186           00487     CLRF    PORTB
+02F8   1683 1303      00488     BANKSEL TRISC
+02FA   3000           00489     MOVLW   B'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02FB   0087           00490     MOVWF   TRISC
+02FC   1283 1303      00491     BANKSEL PORTC
+02FE   0187           00492     CLRF    PORTC
+02FF   1683 1303      00493     BANKSEL TRISD
+0301   3000           00494     MOVLW   B'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0302   0088           00495     MOVWF   TRISD
+0303   1283 1303      00496     BANKSEL PORTD
+0305   0188           00497     CLRF    PORTD
+0306   0008           00498      RETURN     
+0307                  00499 DELAY
+Warning[203]: Found opcode in column 1. (NOP)
+0307   0000           00500 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+0308   0000           00501 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0309   0000           00502 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+030A   0000           00503 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+030B   0000           00504 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+030C   0000           00505 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+030D   0000           00506 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+030E   0000           00507 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+030F   0000           00508 NOP
+Warning[203]: Found opcode in column 1. (NOP)
+0310   0000           00509 NOP
+Warning[203]: Found opcode in column 1. (RETURN)
+0311   0008           00510 RETURN
+                      00511 
+Warning[207]: Found label after column 1. (DELAY_10MS)
+0312                  00512   DELAY_10MS
+0312   3014           00513   MOVLW  .20
+0313   00??           00514   MOVWF  YY
+0314   2???           00515   CALL   DELAY_500US
+0315   0B??           00516   DECFSZ YY, F
+0316   2???           00517   GOTO  $-2
+0317   0008           00518   RETURN 
+                      00519   
+Warning[207]: Found label after column 1. (DELAY_500US)
+0318                  00520  DELAY_500US
+0318   3064           00521   MOVLW  .100
+0319   00??           00522   MOVWF  XX
+Message[305]: Using default destination of 1 (file).
+031A   0B??           00523   DECFSZ XX
+031B   2???           00524   GOTO $-1
+031C   0008           00525   RETURN  
+                      00526 
+Warning[205]: Found directive in column 1. (END)
+20D4 3FFF             00527 END
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABDEN                             00000000
+ABDOVF                            00000007
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ANS0                              00000000
+ANS1                              00000001
+ANS10                             00000002
+ANS11                             00000003
+ANS12                             00000004
+ANS13                             00000005
+ANS2                              00000002
+ANS3                              00000003
+ANS4                              00000004
+ANS5                              00000005
+ANS6                              00000006
+ANS7                              00000007
+ANS8                              00000000
+ANS9                              00000001
+ANSEL                             00000188
+ANSELH                            00000189
+BAUDCTL                           00000187
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRG0                              00000000
+BRG1                              00000001
+BRG10                             00000002
+BRG11                             00000003
+BRG12                             00000004
+BRG13                             00000005
+BRG14                             00000006
+BRG15                             00000007
+BRG16                             00000003
+BRG2                              00000002
+BRG3                              00000003
+BRG4                              00000004
+BRG5                              00000005
+BRG6                              00000006
+BRG7                              00000007
+BRG8                              00000000
+BRG9                              00000001
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BRGH                              00000002
+C                                 00000000
+C1CH0                             00000000
+C1CH1                             00000001
+C1IE                              00000005
+C1IF                              00000005
+C1OE                              00000005
+C1ON                              00000007
+C1OUT                             00000006
+C1POL                             00000004
+C1R                               00000002
+C1RSEL                            00000005
+C1SEN                             00000005
+C2CH0                             00000000
+C2CH1                             00000001
+C2IE                              00000006
+C2IF                              00000006
+C2OE                              00000005
+C2ON                              00000007
+C2OUT                             00000006
+C2POL                             00000004
+C2R                               00000002
+C2REN                             00000004
+C2RSEL                            00000004
+C2SYNC                            00000000
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHANGE_X                          0000023C
+CHANGE_Y                          00000243
+CHS0                              00000002
+CHS1                              00000003
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CHS2                              00000004
+CHS3                              00000005
+CKE                               00000006
+CKP                               00000004
+CLIF                              00000005
+CM1CON0                           00000107
+CM2CON0                           00000108
+CM2CON1                           00000109
+CONFIG_ADC                        0000029D
+CONFIG_FLAG                       000002AE
+CONFIG_IO                         000002E4
+CONFIG_MASTER                     00000280
+CONFIG_OSC                        00000298
+CONFIG_TIMER0                     000002BC
+CONFIG_TIMER1                     000002C9
+CONFIG_TIMER2                     000002D7
+CONT                              00000000
+CONT1                             00000001
+CONT2                             00000002
+CONVERTX                          0000024A
+CONVERTY                          00000252
+CONV_FLAGAS                       00000008
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DELAY                             00000307
+DELAY_10MS                        00000312
+DELAY_500US                       00000318
+DISPLAY_D1                        00000024
+DISPLAY_D12                       00000038
+DISPLAY_D2                        0000002E
+DISPLAY_D22                       00000042
+D_A                               00000005
+D_NOT_A                           00000005
+ECCPAS                            0000009C
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDAT                             0000010C
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+FUE_TIMR0                         00000017
+FUE_TIMR1                         0000004C
+FUE_TIMR2                         00000052
+FVREN                             00000000
+GCEN                              00000007
+GIE                               00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HTS                               00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IOCB6                             00000006
+IOCB7                             00000007
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRP                               00000007
+ISR                               00000008
+LOOP                              00000223
+LTS                               00000001
+MC1OUT                            00000007
+MC2OUT                            00000006
+MSK                               00000093
+MSK0                              00000000
+MSK1                              00000001
+MSK2                              00000002
+MSK3                              00000003
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
+N1X                               00000009
+N1Y                               0000000A
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+NUM                               00000018
+NUM2                              00000019
+NUM_TO_VOLTS                      0000022A
+OERR                              00000001
+OPTION_REG                        00000081
+OSCCON                            0000008F
+OSCTUNE                           00000090
+OSFIE                             00000007
+OSFIF                             00000007
+OSTS                              00000003
+P                                 00000004
+P1M0                              00000006
+P1M1                              00000007
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+POP                               00000011
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PRSEN                             00000007
+PS0                               00000000
+PS1                               00000001
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PS2                               00000002
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTRCON                           0000009D
+PULSR                             00000002
+PULSS                             00000003
+PUSH                              00000004
+PWM1CON                           0000009B
+QUO                               00000012
+QUO1                              00000013
+QUO1X                             0000000F
+QUO1Y                             00000011
+QUOS                              00000014
+QUOS1                             00000015
+QUOS2                             00000016
+QUOS3                             00000017
+QUOX                              0000000E
+QUOY                              00000010
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RAM                               0000000D
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SAVEGG                            00000055
+SBOREN                            00000004
+SCKP                              00000004
+SCS                               00000000
+SEM                               0000001A
+SEN                               00000000
+SENDB                             00000003
+SENDX                             0000025A
+SENDY                             0000026C
+SEV_SEG                           00000072
+SMP                               00000007
+SPBRG                             00000099
+SPBRGH                            0000009A
+SPEN                              00000007
+SR0                               00000006
+SR1                               00000007
+SRCON                             00000185
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPMSK                            00000093
+SSPOV                             00000006
+SSPSTAT                           00000094
+START                             00000200
+STATUS                            00000003
+STATUS_TEMP                       00000007
+STRA                              00000000
+STRB                              00000001
+STRC                              00000002
+STRD                              00000003
+STRSYNC                           00000004
+SWDTEN                            00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1GINV                            00000007
+T1GIV                             00000007
+T1GSS                             00000001
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TEMP                              00000003
+TEMP1                             00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRISE3                            00000003
+TRMT                              00000001
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+ULPWUE                            00000005
+ULPWUIE                           00000002
+ULPWUIF                           00000002
+VCFG0                             00000004
+VCFG1                             00000005
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000097
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+VRSS                              00000004
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000105
+WDTPS0                            00000001
+WDTPS1                            00000002
+WDTPS2                            00000003
+WDTPS3                            00000004
+WPUB                              00000095
+WPUB0                             00000000
+WPUB1                             00000001
+WPUB2                             00000002
+WPUB3                             00000003
+WPUB4                             00000004
+WPUB5                             00000005
+WPUB6                             00000006
+WPUB7                             00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+W_TEMP                            00000006
+X01                               0000005D
+X10                               00000062
+XX                                0000000B
+Y01                               00000067
+Y10                               0000006C
+YY                                0000000C
+Z                                 00000002
+_BOR21V                           00003EFF
+_BOR40V                           00003FFF
+_BOR4V_BOR21V                     00003EFF
+_BOR4V_BOR40V                     00003FFF
+_BOREN_NSLEEP                     00003EFF
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_BOREN_SBODEN                     00003DFF
+_BOR_NSLEEP                       00003EFF
+_BOR_OFF                          00003CFF
+_BOR_ON                           00003FFF
+_BOR_SBODEN                       00003DFF
+_CONFIG1                          00002007
+_CONFIG2                          00002008
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003F7F
+_CP_OFF                           00003FFF
+_CP_ON                            00003FBF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         00001FFF
+_DEVID1                           00002006
+_EC_OSC                           00003FFB
+_EXTRC                            00003FFF
+_EXTRCIO                          00003FFE
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_FCMEN_OFF                        000037FF
+_FCMEN_ON                         00003FFF
+_FOSC_EC                          00003FFB
+_FOSC_EXTRC_CLKOUT                00003FFF
+_FOSC_EXTRC_NOCLKOUT              00003FFE
+_FOSC_HS                          00003FFA
+_FOSC_INTRC_CLKOUT                00003FFD
+_FOSC_INTRC_NOCLKOUT              00003FFC
+_FOSC_LP                          00003FF8
+_FOSC_XT                          00003FF9
+_HS_OSC                           00003FFA
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_IESO_OFF                         00003BFF
+_IESO_ON                          00003FFF
+_INTOSC                           00003FFD
+_INTOSCIO                         00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_LVP_OFF                          00002FFF
+_LVP_ON                           00003FFF
+_MAIN_PROG_0231                   00000231
+_MAIN_PROG_0239                   00000239
+_MAIN_PROG_024C                   0000024C
+_MAIN_PROG_0254                   00000254
+_MAIN_PROG_025B                   0000025B
+_MAIN_PROG_0261                   00000261
+_MAIN_PROG_0267                   00000267
+_MAIN_PROG_026F                   0000026F
+_MAIN_PROG_0275                   00000275
+_MAIN_PROG_027B                   0000027B
+MPASM 5.77                      PIC_MAST.ASM   10-25-2020  16:27:02         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_MAIN_PROG_0316                   00000316
+_MAIN_PROG_031B                   0000031B
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDTE_OFF                         00003FF7
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FF9
+__16F887                          00000001
+
+Errors   :     0
+Warnings :    96 reported,     0 suppressed
+Messages :    39 reported,     0 suppressed
+
+

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=davidesgay.asm
+SOURCEFILES_QUOTED_IF_SPACED=LAB__4.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/davidesgay.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/davidesgay.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LAB__4.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/LAB__4.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/davidesgay.o
+OBJECTFILES=${OBJECTDIR}/LAB__4.o
 
 # Source Files
-SOURCEFILES=davidesgay.asm
+SOURCEFILES=LAB__4.asm
 
 
 CFLAGS=
@@ -90,26 +90,26 @@ endif
 	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/lab41111111.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=16f887
-MP_LINKER_DEBUG_OPTION= 
+MP_LINKER_DEBUG_OPTION=-r=ROM@0x1F00:0x1FFE -r=RAM@SHARE:0x70:0x70 -r=RAM@SHARE:0xF0:0xF0 -r=RAM@SHARE:0x170:0x170 -r=RAM@GPR:0x1E5:0x1EF -r=RAM@SHARE:0x1F0:0x1F0
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/davidesgay.o: davidesgay.asm  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/LAB__4.o: LAB__4.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/davidesgay.o.d 
-	@${RM} ${OBJECTDIR}/davidesgay.o 
-	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/davidesgay.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_SIMULATOR=1 -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/davidesgay.lst\" -e\"${OBJECTDIR}/davidesgay.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/davidesgay.o\" \"davidesgay.asm\" 
-	@${DEP_GEN} -d "${OBJECTDIR}/davidesgay.o"
-	@${FIXDEPS} "${OBJECTDIR}/davidesgay.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	@${RM} ${OBJECTDIR}/LAB__4.o.d 
+	@${RM} ${OBJECTDIR}/LAB__4.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/LAB__4.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_PK3=1 -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/LAB__4.lst\" -e\"${OBJECTDIR}/LAB__4.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/LAB__4.o\" \"LAB__4.asm\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/LAB__4.o"
+	@${FIXDEPS} "${OBJECTDIR}/LAB__4.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
 else
-${OBJECTDIR}/davidesgay.o: davidesgay.asm  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/LAB__4.o: LAB__4.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/davidesgay.o.d 
-	@${RM} ${OBJECTDIR}/davidesgay.o 
-	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/davidesgay.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/davidesgay.lst\" -e\"${OBJECTDIR}/davidesgay.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/davidesgay.o\" \"davidesgay.asm\" 
-	@${DEP_GEN} -d "${OBJECTDIR}/davidesgay.o"
-	@${FIXDEPS} "${OBJECTDIR}/davidesgay.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	@${RM} ${OBJECTDIR}/LAB__4.o.d 
+	@${RM} ${OBJECTDIR}/LAB__4.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/LAB__4.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/LAB__4.lst\" -e\"${OBJECTDIR}/LAB__4.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/LAB__4.o\" \"LAB__4.asm\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/LAB__4.o"
+	@${FIXDEPS} "${OBJECTDIR}/LAB__4.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
 endif
 
@@ -118,7 +118,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/lab41111111.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_LD} $(MP_EXTRA_LD_PRE)   -p$(MP_PROCESSOR_OPTION)  -w -x -u_DEBUG -z__ICD2RAM=1 -m"${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"   -z__MPLAB_BUILD=1  -z__MPLAB_DEBUG=1 -z__MPLAB_DEBUGGER_SIMULATOR=1 $(MP_LINKER_DEBUG_OPTION) -odist/${CND_CONF}/${IMAGE_TYPE}/lab41111111.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_LD} $(MP_EXTRA_LD_PRE)   -p$(MP_PROCESSOR_OPTION)  -w -x -u_DEBUG -z__ICD2RAM=1 -m"${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"   -z__MPLAB_BUILD=1  -z__MPLAB_DEBUG=1 -z__MPLAB_DEBUGGER_PK3=1 $(MP_LINKER_DEBUG_OPTION) -odist/${CND_CONF}/${IMAGE_TYPE}/lab41111111.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/lab41111111.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 

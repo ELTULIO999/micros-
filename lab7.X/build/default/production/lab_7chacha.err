@@ -1,0 +1,78 @@
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 24 : Found label after column 1. (GPR_VAR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 25 : Found label after column 1. (CONT)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 26 : Found label after column 1. (CONT1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 27 : Found label after column 1. (CONT2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 28 : Found label after column 1. (TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 29 : Found label after column 1. (TEMP1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 30 : Found label after column 1. (CLIF)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 31 : Found label after column 1. (W_TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 32 : Found label after column 1. (STATUS_TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 41 : Found label after column 1. (RES_VECT)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 45 : Found label after column 1. (PUSH)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 50 : Found label after column 1. (ISR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 58 : Found label after column 1. (POP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 64 : Found opcode in column 1. (RETFIE)
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 87 : Using default destination of 1 (file).
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 109 : Found label after column 1. (MAIN_PROG)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 111 : Found opcode in column 1. (BCF)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 111 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 112 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 113 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 114 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 115 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 116 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 117 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 118 : Found opcode in column 1. (CALL)
+Warning[205] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 120 : Found directive in column 1. (BANKSEL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 121 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 122 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 123 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 124 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 125 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 126 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 127 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 128 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 129 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 130 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 131 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 132 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 133 : Found opcode in column 1. (CLRF)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 134 : Found opcode in column 1. (GOTO)
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 140 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 141 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 144 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 150 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 151 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 154 : Using default destination of 1 (file).
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 161 : Found opcode in column 1. (GOTO)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 171 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 174 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 175 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 177 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 180 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 181 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 187 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 188 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 197 : Found label after column 1. (DISPLAY_D2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 211 : Found label after column 1. (CONFIG_OSC)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 214 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 216 : Found label after column 1. (CONFIG_FLAG)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 221 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 222 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 229 : Found label after column 1. (CONFIG_TIMER0)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 231 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 232 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 233 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 234 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 235 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 254 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 261 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 265 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 269 : Found label after column 1. (CONFIG_IO)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 272 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 276 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 277 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 280 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 285 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 290 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB7.X\LAB_7CHACHA.ASM 294 : Found directive in column 1. (END)

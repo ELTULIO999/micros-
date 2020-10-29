@@ -1,0 +1,3127 @@
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;*******************************************************************************
+                      00002 ;                                                                              *
+                      00003 ;    Filename: julio lopez                                                     *
+                      00004 ;    Date:     9/8/2020                                                        *
+                      00005 ;    File Version:                                                             *
+                      00006 ;    Author:                                                                   *
+                      00007 ;    Company:                                                                  *
+                      00008 ;    Description:                                                              *
+                      00009 ;                            HORAS  CON ITERMITENTES                                                   *
+                      00010 ;*******************************************************************************
+                      00011 ; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR
+                      00012     
+                      00013     #INCLUDE "p16f887.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Nov 22 2017
+                      00005 ;  MPASM PIC16F887 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00810         LIST
+                      00014 ; CONFIG1
+                      00015 ; __config 0xF0F1
+2007   20D4           00016  __CONFIG _CONFIG1, _FOSC_INTRC_NOCLKOUT & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _CPD_OFF & _B
+                            OREN_OFF & _IESO_OFF & _FCMEN_OFF & _LVP_OFF
+                      00017 ; CONFIG2
+                      00018 ; __config 0xFFFF
+2008   3FFF           00019  __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+                      00020  ;-----------------------------------------------------------------------------
+                      00021  ;-----------------------------------------------------------------------------
+                      00022  
+Warning[207]: Found label after column 1. (GPR_VAR)
+                      00023  GPR_VAR  UDATA 
+Warning[207]: Found label after column 1. (CONTF)
+0000                  00024  CONTF         RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CONTSEG)
+0001                  00025  CONTSEG       RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CONTSEGALARMA)
+0002                  00026  CONTSEGALARMA RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CONTALARMA)
+0003                  00027  CONTALARMA    RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (ALARMA_SU)
+0004                  00028  ALARMA_SU     RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (ALARMA_SD)
+0005                  00029  ALARMA_SD     RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (ALARMA_MU)
+0006                  00030  ALARMA_MU     RES 1 ;IN USE
+Warning[207]: Found label after column 1. (ALARMA_MD)
+0007                  00031  ALARMA_MD     RES 1 ;IN USE
+Warning[207]: Found label after column 1. (TEMPALARMA)
+0008                  00032  TEMPALARMA    RES 1 ;IN USE      
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[207]: Found label after column 1. (ESPE)
+0009                  00033  ESPE          RES 1 ;IN USE
+Warning[207]: Found label after column 1. (ESPE2)
+000A                  00034  ESPE2         RES 1 ;IN USE
+Warning[207]: Found label after column 1. (ESPE3)
+000B                  00035  ESPE3         RES 1 ;IN USE
+Warning[207]: Found label after column 1. (ESPE4)
+000C                  00036  ESPE4         RES 1 ;IN USE
+Warning[207]: Found label after column 1. (CONTDIA)
+000D                  00037  CONTDIA       RES 1 ;IN USE
+Warning[207]: Found label after column 1. (CONT2)
+000E                  00038  CONT2         RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (CONTADOR1)
+000F                  00039  CONTADOR1     RES 1 ;IN USE
+Warning[207]: Found label after column 1. (CONTADOR2)
+0010                  00040  CONTADOR2     RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (NIBBLEH)
+0011                  00041  NIBBLEH       RES 1  ;MIN
+Warning[207]: Found label after column 1. (NIBBLEL)
+0012                  00042  NIBBLEL       RES 1  ;10 MIN
+Warning[207]: Found label after column 1. (NIBBLE_HL)
+0013                  00043  NIBBLE_HL     RES 1  ;HORAS
+Warning[207]: Found label after column 1. (NIBBLE_HH)
+0014                  00044  NIBBLE_HH     RES 1  ;20 HORAS 
+Warning[207]: Found label after column 1. (NIBBLE_DL)
+0015                  00045  NIBBLE_DL     RES 1  ;9 DIAS  
+Warning[207]: Found label after column 1. (NIBBLE_DH)
+0016                  00046  NIBBLE_DH     RES 1  ;28 DIAS MAX 
+Warning[207]: Found label after column 1. (NIBBLE_ML)
+0017                  00047  NIBBLE_ML     RES 1  ;9 MESES    MAX 12
+Warning[207]: Found label after column 1. (NIBBLE_MH)
+0018                  00048  NIBBLE_MH     RES 1  ;10MESES    MAX 12
+Warning[207]: Found label after column 1. (CONT_NEW)
+0019                  00049  CONT_NEW      RES 1 ;NO USE
+Warning[207]: Found label after column 1. (CONT_OLD)
+001A                  00050  CONT_OLD      RES 1 ;NO USE 
+Warning[207]: Found label after column 1. (ESTADO)
+001B                  00051  ESTADO        RES 1 ;IN USE  
+Warning[207]: Found label after column 1. (FLAGSMES)
+001C                  00052  FLAGSMES      RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (FLAGSHORAS)
+001D                  00053  FLAGSHORAS    RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (FLAGSMODH)
+001E                  00054  FLAGSMODH     RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (FLAGSALARMA)
+001F                  00055  FLAGSALARMA   RES 1 ;IN USE 
+Warning[207]: Found label after column 1. (FLAGCOUNTDOWN)
+0020                  00056  FLAGCOUNTDOWN RES 1 ;IN USE 
+                      00057  ;++++++++++++++++++++++++++++++++++++++++++++++++
+0021                  00058 CONTHORAS       RES 1 ;IN USE
+0022                  00059 CONTHORAS_H     RES 1 ;IN USE
+0023                  00060 TEMPHORAS       RES 1 
+0024                  00061 TEMPHORAS_H     RES 1 
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0025                  00062 CONTMES_L       RES 1 ;IN USE
+0026                  00063 CONTMES_H       RES 1 ;IN USE
+0027                  00064 TEMPMES_L       RES 1 
+0028                  00065 TEMPMES_H       RES 1 
+Warning[207]: Found label after column 1. (TEMP1)
+0029                  00066  TEMP1          RES 1 ;NOT USE NOT CLEAN
+Warning[207]: Found label after column 1. (TEMP2)
+002A                  00067  TEMP2          RES 1 ;NOT USE NOT CLEAN
+                      00068  ; VARIABLES TEPORALES 
+Warning[207]: Found label after column 1. (W_TEMP)
+002B                  00069  W_TEMP       RES 1
+Warning[207]: Found label after column 1. (STATUS_TEMP)
+002C                  00070  STATUS_TEMP  RES 1
+                      00071 RES_VECT  CODE    0x0000            ; processor reset vector
+0000   2???           00072  GOTO    START                   ; go to beginning of program
+                      00073 ;*******************************************************************************TODO ADD INTERRUPTS HERE
+                             IF USED
+                      00074 ISR_VEC CODE 0X004
+Warning[207]: Found label after column 1. (PUSH)
+0004                  00075  PUSH:
+0004   138B           00076     BCF   INTCON, GIE
+0005   00??           00077     MOVWF W_TEMP
+0006   0E03           00078     SWAPF STATUS, W
+0007   00??           00079     MOVWF STATUS_TEMP
+Warning[207]: Found label after column 1. (ISR)
+0008                  00080  ISR:
+0008   188C           00081     BTFSC PIR1, TMR2IF
+0009   2???           00082     CALL FUE_TIMR2
+000A   180C           00083     BTFSC PIR1, TMR1IF
+000B   2???           00084     CALL FUE_TIMR1  
+000C   1D0B           00085     BTFSS INTCON, T0IF 
+000D   2???           00086     GOTO POP    
+000E   2???           00087     CALL FUE_TIMR0
+Warning[207]: Found label after column 1. (POP)
+000F                  00088  POP:
+000F   0E??           00089     SWAPF STATUS_TEMP, W
+0010   0083           00090     MOVWF STATUS 
+0011   0E??           00091     SWAPF W_TEMP, F
+0012   0E??           00092     SWAPF W_TEMP, W
+0013   178B           00093     BSF   INTCON, GIE 
+Warning[203]: Found opcode in column 1. (RETFIE)
+0014   0009           00094 RETFIE
+                      00095 ;//////////////////////////////SUBRUTINAS DE TIMERS/////////////////////////////
+0015                  00096 FUE_TIMR0
+0015   1D0B           00097     BTFSS INTCON, T0IF 
+0016   2???           00098     GOTO POP
+0017   3006           00099     MOVLW .6
+0018   0081           00100     MOVWF TMR0
+0019   110B           00101     BCF INTCON, T0IF
+001A   1800           00102     BTFSC FLAGSHORAS,0
+001B   2???           00103      CALL DISPLAY_GE
+001C   1800           00104     BTFSC FLAGSMES,0
+001D   2???           00105      CALL DISPLAY_GEMES
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001E   1800           00106     BTFSC FLAGSALARMA,0
+001F   2???           00107      CALL DISPLAY_GEALRMA
+0020   0008           00108     RETURN 
+0021                  00109 FUE_TIMR1
+0021   30CF           00110     MOVLW .207  ;PRESCALER HIGH 
+0022   008F           00111     MOVWF TMR1H
+0023   3026           00112     MOVLW .38  ;PRESCALER LOW
+0024   008E           00113     MOVWF TMR1L
+0025   100C           00114     BCF  PIR1, TMR1IF
+Message[305]: Using default destination of 1 (file).
+0026   0A??           00115     INCF CONTADOR1
+0027   2???           00116     CALL TIMER1S
+0028   0008           00117     RETURN 
+0029                  00118 FUE_TIMR2
+0029   0191           00119     CLRF TMR2
+002A   108C           00120     BCF PIR1, TMR2IF 
+Message[305]: Using default destination of 1 (file).
+002B   0A??           00121     INCF CONTADOR2
+002C   2???           00122     CALL TIMER1_2S
+002D   1800           00123     BTFSC FLAGCOUNTDOWN,0
+002E   2???           00124     CALL lj
+002F   0008           00125     RETURN 
+                      00126  ;/////////////////////////////////////////////////////////////////////////////
+Warning[207]: Found label after column 1. (lj)
+0030                  00127  lj
+0030   1E86           00128  BTFSS PORTB      ,RB5
+0031   2???           00129  CALL TIMERALRMA 
+0032   1A86           00130  BTFSC PORTB      ,RB5
+0033   2???           00131  CALL TIMER_ALARMA_TILL_OFF
+0034   0008           00132  RETURN 
+                      00133  ;/////////////////////////////////////////////////////////////////////////////
+                      00134  ; tablas de displays 
+0035                  00135 SEV_SEG:
+0035   0782           00136     ADDWF PCL, F
+0036   3477           00137     RETLW B'01110111';0
+0037   3414           00138     RETLW B'00010100';1
+0038   34B3           00139     RETLW B'10110011';2
+0039   34B6           00140     RETLW B'10110110';3
+003A   34D4           00141     RETLW B'11010100';4
+003B   34E6           00142     RETLW B'11100110';5
+003C   34E7           00143     RETLW B'11100111';6
+003D   3434           00144     RETLW B'00110100';7
+003E   34F7           00145     RETLW B'11110111';8
+003F   34F4           00146     RETLW B'11110100';9                                                                                 
+                                                                         
+0040   345F           00147     RETLW B'01011111';A
+0041   347C           00148     RETLW B'01111100';b
+0042   3436           00149     RETLW B'00110110';C
+0043   3479           00150     RETLW B'01111001';d
+0044   343E           00151     RETLW B'00111110';E
+0045   341E           00152     RETLW B'00011110';F
+                      00153     ;tabla de carga de horas 
+Warning[207]: Found label after column 1. (HORAS)
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0046                  00154     HORAS:
+0046   08??           00155     MOVF CONTHORAS, W
+0047   0782           00156     ADDWF PCL, F
+0048   2???           00157     GOTO UNDERZERO
+0049   3400           00158     RETLW 0X0
+004A   3401           00159     RETLW 0X1
+004B   3402           00160     RETLW 0X2
+004C   3403           00161     RETLW 0X3
+004D   3404           00162     RETLW 0X4
+004E   3405           00163     RETLW 0X5
+004F   3406           00164     RETLW 0X6
+0050   3407           00165     RETLW 0X7
+0051   3408           00166     RETLW 0X8
+0052   3409           00167     RETLW 0X9
+0053   3410           00168     RETLW 0X10
+0054   3411           00169     RETLW 0X11
+0055   3412           00170     RETLW 0X12
+0056   3413           00171     RETLW 0X13
+0057   3414           00172     RETLW 0X14
+0058   3415           00173     RETLW 0X15
+0059   3416           00174     RETLW 0X16
+005A   3417           00175     RETLW 0X17
+005B   3419           00176     RETLW 0X19
+005C   3420           00177     RETLW 0X20
+005D   3421           00178     RETLW 0X21
+005E   3422           00179     RETLW 0X22
+005F   3423           00180     RETLW 0X23
+0060   2???           00181     GOTO HORARESET
+Warning[207]: Found label after column 1. (HORAS_L)
+0061                  00182     HORAS_L
+0061   08??           00183     MOVF CONTHORAS_H, W
+0062   0782           00184     ADDWF PCL, F
+0063   2???           00185     GOTO UNDERZERO2
+0064   3400           00186     RETLW 0X0
+0065   3401           00187     RETLW 0X1
+0066   3402           00188     RETLW 0X2
+0067   3403           00189     RETLW 0X3
+0068   3404           00190     RETLW 0X4
+0069   3405           00191     RETLW 0X5
+006A   3406           00192     RETLW 0X6
+006B   3407           00193     RETLW 0X7
+006C   3408           00194     RETLW 0X8
+006D   3409           00195     RETLW 0X9
+006E   3410           00196     RETLW 0X10
+006F   3411           00197     RETLW 0X11
+0070   3412           00198     RETLW 0X12
+0071   3413           00199     RETLW 0X13
+0072   3414           00200     RETLW 0X14
+0073   3415           00201     RETLW 0X15
+0074   3416           00202     RETLW 0X16
+0075   3417           00203     RETLW 0X17
+0076   3419           00204     RETLW 0X19
+0077   3420           00205     RETLW 0X20
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0078   3421           00206     RETLW 0X21
+0079   3422           00207     RETLW 0X22
+007A   3423           00208     RETLW 0X23
+007B   3424           00209     RETLW 0X24
+007C   3425           00210     RETLW 0X25
+007D   3426           00211     RETLW 0X26
+007E   3427           00212     RETLW 0X27
+007F   3428           00213     RETLW 0X28
+0080   3429           00214     RETLW 0X29
+0081   3430           00215     RETLW 0X30
+0082   3431           00216     RETLW 0X31
+0083   3432           00217     RETLW 0X32
+0084   3433           00218     RETLW 0X33
+0085   3434           00219     RETLW 0X34
+0086   3435           00220     RETLW 0X35
+0087   3436           00221     RETLW 0X36
+0088   3437           00222     RETLW 0X37
+0089   3438           00223     RETLW 0X38
+008A   3439           00224     RETLW 0X39
+008B   3440           00225     RETLW 0X40
+008C   3441           00226     RETLW 0X41
+008D   3442           00227     RETLW 0X42
+008E   3443           00228     RETLW 0X43
+008F   3444           00229     RETLW 0X44
+0090   3445           00230     RETLW 0X45
+0091   3446           00231     RETLW 0X46
+0092   3447           00232     RETLW 0X47
+0093   3448           00233     RETLW 0X48
+0094   3449           00234     RETLW 0X49
+0095   3450           00235     RETLW 0X50
+0096   3451           00236     RETLW 0X51
+0097   3452           00237     RETLW 0X52
+0098   3453           00238     RETLW 0X53
+0099   3454           00239     RETLW 0X54
+009A   3455           00240     RETLW 0X55
+009B   3456           00241     RETLW 0X56
+009C   3457           00242     RETLW 0X57
+009D   3458           00243     RETLW 0X58
+009E   3459           00244     RETLW 0X59
+009F   2???           00245     GOTO HORARESET2
+                      00246    ;tabla de estados 
+Warning[207]: Found label after column 1. (ESTADOS)
+00A0                  00247   ESTADOS:
+00A0   08??           00248     MOVF ESTADO, W
+Message[305]: Using default destination of 1 (file).
+00A1   0782           00249     ADDWF PCL
+00A2   2???           00250     GOTO LOOPHORA
+00A3   2???           00251     GOTO LOOPMES
+00A4   2???           00252     GOTO LOOP_MOD_HORA
+00A5   2???           00253     GOTO LOOP_MOD_MES
+00A6   2???           00254     GOTO LOOP_MODALARMA 
+00A7   2???           00255     GOTO LOOP_ALARMA 
+00A8   2???           00256     GOTO RESETLOOP 
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00257     ;tabla de funcion de meses 
+Warning[207]: Found label after column 1. (MES)
+00A9                  00258     MES:
+00A9   08??           00259     MOVF CONTDIA, W
+Message[305]: Using default destination of 1 (file).
+00AA   0782           00260     ADDWF PCL
+00AB   2???           00261     GOTO ENE ;0
+00AC   2???           00262     GOTO FEB ;1
+00AD   2???           00263     GOTO MAR ;2
+00AE   2???           00264     GOTO ABR ;3
+00AF   2???           00265     GOTO MAY ;4
+00B0   2???           00266     GOTO JUN ;5
+00B1   2???           00267     GOTO JUL ;6
+00B2   2???           00268     GOTO AGO ;7
+00B3   2???           00269     GOTO SEP ;8
+00B4   2???           00270     GOTO OCT ;9
+00B5   2???           00271     GOTO NOV ;10
+00B6   2???           00272     GOTO DIC ;11
+                      00273     ;tabla de mes para cargar un valor a los meses
+Warning[207]: Found label after column 1. (MES_L)
+00B7                  00274     MES_L:
+00B7   08??           00275     MOVF CONTMES_L, W
+00B8   0782           00276     ADDWF PCL, F
+00B9   3401           00277     RETLW .1 ;0
+00BA   3402           00278     RETLW .2 ;1
+00BB   3403           00279     RETLW .3 ;2
+00BC   3404           00280     RETLW .4 ;3
+00BD   3405           00281     RETLW .5 ;4
+00BE   3406           00282     RETLW .6 ;5
+00BF   3407           00283     RETLW .7 ;6
+00C0   3408           00284     RETLW .8 ;6
+00C1   3409           00285     RETLW .9 ;8
+00C2   3400           00286     RETLW .0 ;8
+00C3   2???           00287     GOTO MESRESET
+Warning[207]: Found label after column 1. (MES_H)
+00C4                  00288     MES_H:
+00C4   08??           00289     MOVF CONTMES_H, W
+00C5   0782           00290     ADDWF PCL, F
+00C6   3400           00291     RETLW .0
+00C7   3401           00292     RETLW .1
+00C8   2???           00293     GOTO MESRESET_H
+                      00294    
+                      00295  ;*****************************************************************************
+                      00296  ;/////////////////////////////////////////////////////////////////////////////
+                      00297  ;*****************************************************************************
+                      00298  ;setUP de todo el programa 
+                      00299 MAIN_PROG CODE       0X100   
+0100                  00300 START
+Warning[203]: Found opcode in column 1. (BCF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0100   1381           00301 BCF OPTION_REG , 7
+Warning[203]: Found opcode in column 1. (CALL)
+0101   2???           00302 CALL    CONFIG_IO
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (CALL)
+0102   2???           00303 CALL    CONFIG_TIMER0
+Warning[203]: Found opcode in column 1. (CALL)
+0103   2???           00304 CALL    CONFIG_TIMER1
+Warning[203]: Found opcode in column 1. (CALL)
+0104   2???           00305 CALL    CONFIG_TIMER2
+Warning[203]: Found opcode in column 1. (CALL)
+0105   2???           00306 CALL    CONFIG_FLAG
+Warning[205]: Found directive in column 1. (BANKSEL)
+0106   1283 1303      00307 BANKSEL PORTA 
+Warning[203]: Found opcode in column 1. (CLRF)
+0108   01??           00308 CLRF    CONTADOR1
+Warning[203]: Found opcode in column 1. (CLRF)
+0109   01??           00309 CLRF    CONTADOR2
+Warning[203]: Found opcode in column 1. (CLRF)
+010A   01??           00310 CLRF    NIBBLEL
+Warning[203]: Found opcode in column 1. (CLRF)
+010B   01??           00311 CLRF    NIBBLEH
+Warning[203]: Found opcode in column 1. (CLRF)
+010C   01??           00312 CLRF    NIBBLE_HL
+Warning[203]: Found opcode in column 1. (CLRF)
+010D   01??           00313 CLRF    NIBBLE_HH
+Warning[203]: Found opcode in column 1. (CLRF)
+010E   01??           00314 CLRF    NIBBLE_DL
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+010F   0A??           00315 INCF    NIBBLE_DL
+Warning[203]: Found opcode in column 1. (CLRF)
+0110   01??           00316 CLRF    NIBBLE_DH
+Warning[203]: Found opcode in column 1. (CLRF)
+0111   01??           00317 CLRF    NIBBLE_ML
+Warning[203]: Found opcode in column 1. (CLRF)
+0112   01??           00318 CLRF    NIBBLE_MH
+Warning[203]: Found opcode in column 1. (CLRF)
+0113   01??           00319 CLRF    ALARMA_SU 
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+0114   0A??           00320 INCF    ALARMA_SU 
+Warning[203]: Found opcode in column 1. (CLRF)
+0115   01??           00321 CLRF    ALARMA_SD 
+Warning[203]: Found opcode in column 1. (CLRF)
+0116   01??           00322 CLRF    ALARMA_MU 
+Warning[203]: Found opcode in column 1. (CLRF)
+0117   01??           00323 CLRF    ALARMA_MD 
+Warning[203]: Found opcode in column 1. (CLRF)
+0118   01??           00324 CLRF    CONTHORAS
+Warning[203]: Found opcode in column 1. (CLRF)
+0119   01??           00325 CLRF    CONTHORAS_H
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+011A   0A??           00326 INCF    CONTHORAS
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+011B   0A??           00327 INCF    CONTHORAS_H
+Warning[203]: Found opcode in column 1. (CLRF)
+011C   01??           00328 CLRF    TEMPHORAS
+Warning[203]: Found opcode in column 1. (CLRF)
+011D   01??           00329 CLRF    TEMPHORAS_H
+Warning[203]: Found opcode in column 1. (CLRF)
+011E   01??           00330 CLRF    CONTMES_L
+Warning[203]: Found opcode in column 1. (CLRF)
+011F   01??           00331 CLRF    CONTMES_H
+Warning[203]: Found opcode in column 1. (CLRF)
+0120   01??           00332 CLRF    TEMPMES_L
+Warning[203]: Found opcode in column 1. (CLRF)
+0121   01??           00333 CLRF    TEMPMES_H
+Warning[203]: Found opcode in column 1. (CLRF)
+0122   01??           00334 CLRF    CONTDIA
+Warning[203]: Found opcode in column 1. (CLRF)
+0123   01??           00335 CLRF    ESPE
+Warning[203]: Found opcode in column 1. (CLRF)
+0124   01??           00336 CLRF    ESPE2
+Warning[203]: Found opcode in column 1. (CLRF)
+0125   01??           00337 CLRF    ESPE3
+Warning[203]: Found opcode in column 1. (CLRF)
+0126   01??           00338 CLRF    ESPE4
+Warning[203]: Found opcode in column 1. (CLRF)
+0127   01??           00339 CLRF    TEMPALARMA
+Warning[203]: Found opcode in column 1. (CLRF)
+0128   01??           00340 CLRF    CONTSEG 
+Warning[203]: Found opcode in column 1. (CLRF)
+0129   01??           00341 CLRF    CONTSEGALARMA
+Warning[203]: Found opcode in column 1. (CLRF)
+012A   01??           00342 CLRF    CONTALARMA 
+Warning[203]: Found opcode in column 1. (CLRF)
+012B   01??           00343 CLRF    ESTADO 
+Warning[203]: Found opcode in column 1. (CLRF)
+012C   01??           00344 CLRF    FLAGSHORAS 
+Warning[203]: Found opcode in column 1. (CLRF)
+012D   01??           00345 CLRF    FLAGSMES
+Warning[203]: Found opcode in column 1. (CLRF)
+012E   01??           00346 CLRF    FLAGSALARMA 
+Warning[203]: Found opcode in column 1. (CLRF)
+012F   01??           00347 CLRF    FLAGSMODH
+Warning[203]: Found opcode in column 1. (CLRF)
+0130   01??           00348 CLRF    FLAGSMODH
+Warning[203]: Found opcode in column 1. (CLRF)
+0131   01??           00349 CLRF    FLAGCOUNTDOWN
+Warning[203]: Found opcode in column 1. (MOVLW)
+0132   30FA           00350 MOVLW   .250
+Warning[203]: Found opcode in column 1. (MOVWF)
+0133   00??           00351 MOVWF   ESPE3
+Warning[203]: Found opcode in column 1. (GOTO)
+0134   2???           00352 GOTO    LOOPHORA  
+                      00353  ;******************************************************************************
+                      00354  ;//////////////////////////////////////////////////////////////////////////////
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00355  ;******************************************************************************
+                      00356  ;                              loop forever
+                      00357  ;******************************************************************************
+                      00358  ;//////////////////////////////////////////////////////////////////////////////
+                      00359  ;******************************************************************************
+Warning[207]: Found label after column 1. (LOOPHORA)
+0135                  00360  LOOPHORA:
+0135   1406           00361  BSF PORTB,RB0
+0136   1086           00362  BCF PORTB,RB1
+0137   1106           00363  BCF PORTB,RB2
+0138   1186           00364  BCF PORTB,RB3
+0139   1400           00365  BSF FLAGSHORAS      ,0 ;DISPLAY DE HORAS EN ON 
+013A   1000           00366  BCF FLAGSMES        ,0 ;DISPLAY DE MES   EN OFF
+013B   1000           00367  BCF FLAGSALARMA     ,0 ;DISPLAY DE ALR   EN OFF
+013C   2???           00368  CALL SUMA_ESTADO       ;ESTADO CHANGE 
+013D   2???           00369  CALL INCREMENTUNOS
+013E   2???           00370  CALL PISHLEDS
+013F   2???           00371  GOTO ESTADOS 
+0140   2???           00372  GOTO LOOPHORA 
+                      00373  ;*****************************************************************************
+                      00374  ;/////////////////////////////////////////////////////////////////////////////
+                      00375  ;*****************************************************************************
+Warning[207]: Found label after column 1. (LOOPMES)
+0141                  00376  LOOPMES:
+0141   1006           00377  BCF PORTB,RB0
+0142   1486           00378  BSF PORTB,RB1
+0143   1106           00379  BCF PORTB,RB2
+0144   1186           00380  BCF PORTB,RB3
+0145   1000           00381  BCF FLAGSHORAS     ,0 ;DISPLAY DE HORAS EN OFF 
+0146   1400           00382  BSF FLAGSMES       ,0 ;DISPLAY DE MES   EN ON 
+0147   1000           00383  BCF FLAGSALARMA    ,0 ;DISPLAY DE ALR   EN OFF 
+0148   2???           00384  CALL SUMA_ESTADO      ;ESTADO CHANGE 
+0149   2???           00385  CALL INCREMENTUNOS
+014A   2???           00386  GOTO ESTADOS  
+014B   2???           00387  GOTO LOOPMES  
+                      00388  ;*****************************************************************************
+                      00389  ;/////////////////////////////////////////////////////////////////////////////
+                      00390  ;*****************************************************************************
+Warning[207]: Found label after column 1. (LOOP_MOD_HORA)
+014C                  00391  LOOP_MOD_HORA:
+014C   2???           00392  CALL SUMA_ESTADO      ;ESTADO CHANGE 
+014D   1406           00393  BSF PORTB,RB0
+014E   1086           00394  BCF PORTB,RB1
+014F   1506           00395  BSF PORTB,RB2
+0150   1186           00396  BCF PORTB,RB3
+0151   1400           00397  BSF FLAGSHORAS     ,0 ;DISPLAY DE HORAS EN OFF
+0152   1000           00398  BCF FLAGSMES       ,0 ;DISPLAY DE MES   EN OFF 
+0153   1000           00399  BCF FLAGSALARMA    ,0 ;DISPLAY DE ALR   EN OFF 
+0154   2???           00400  CALL SUMA2
+0155   2???           00401  CALL SUMA2_
+0156   2???           00402  CALL MEN2
+0157   2???           00403  CALL MEN2_
+0158   2???           00404  CALL INCREMENTUNOS
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0159   2???           00405  CALL PISHLEDS
+015A   2???           00406  GOTO ESTADOS 
+015B   2???           00407  GOTO LOOP_MOD_HORA  
+                      00408  ;*****************************************************************************
+                      00409  ;/////////////////////////////////////////////////////////////////////////////
+                      00410  ;*****************************************************************************
+Warning[207]: Found label after column 1. (LOOP_MOD_MES)
+015C                  00411  LOOP_MOD_MES:  
+015C   1006           00412  BCF PORTB,RB0
+015D   1486           00413  BSF PORTB,RB1
+015E   1106           00414  BCF PORTB,RB2
+015F   1586           00415  BSF PORTB,RB3
+0160   1000           00416  BCF FLAGSHORAS     ,0 ;DISPLAY DE HORAS EN OFF
+0161   1400           00417  BSF FLAGSMES       ,0 ;DISPLAY DE MES   EN ON 
+0162   1000           00418  BCF FLAGSALARMA    ,0 ;DISPLAY DE ALR   EN OFF 
+0163   2???           00419  CALL SUMA_ESTADO   ;ESTADO CHANGE 
+0164   2???           00420  CALL SUMA
+0165   2???           00421  CALL SUMA_
+0166   2???           00422  CALL MEN
+0167   2???           00423  CALL MEN_
+0168   2???           00424  CALL INCREMENTUNOS
+0169   2???           00425  GOTO ESTADOS 
+016A   2???           00426  GOTO LOOP_MOD_MES
+                      00427  ;*****************************************************************************
+                      00428  ;/////////////////////////////////////////////////////////////////////////////
+                      00429  ;*****************************************************************************
+Warning[207]: Found label after column 1. (LOOP_MODALARMA)
+016B                  00430   LOOP_MODALARMA:
+016B   1006           00431  BCF PORTB,RB0
+016C   1486           00432  BSF PORTB,RB1
+016D   1506           00433  BSF PORTB,RB2
+016E   1586           00434  BSF PORTB,RB3
+016F   1000           00435  BCF FLAGSHORAS     ,0 ;DISPLAY DE HORAS EN OFF
+0170   1000           00436  BCF FLAGSMES       ,0 ;DISPLAY DE MES   EN OFF 
+0171   1400           00437  BSF FLAGSALARMA    ,0 ;DISPLAY DE ALM   EN ON
+0172   2???           00438  CALL SUMAA
+0173   2???           00439  CALL SUMAA_
+0174   2???           00440  CALL MENA
+0175   2???           00441  CALL MENA_
+0176   2???           00442  CALL ALARMADADA
+0177   2???           00443  CALL SUMA_ESTADO
+0178   2???           00444  CALL INCREMENTUNOS
+0179   2???           00445  GOTO ESTADOS 
+017A   2???           00446  GOTO LOOP_MODALARMA
+                      00447  ;******************************************************************************
+                      00448  ;/////////////////////////////////////////////////////////////////////////////
+                      00449  ;******************************************************************************
+Warning[207]: Found label after column 1. (LOOP_ALARMA)
+017B                  00450  LOOP_ALARMA:
+017B   1406           00451  BSF PORTB,RB0
+017C   1486           00452  BSF PORTB,RB1
+017D   1506           00453  BSF PORTB,RB2
+017E   1586           00454  BSF PORTB,RB3
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+017F   1000           00455  BCF FLAGSHORAS     ,0 ;DISPLAY DE HORAS EN OFF
+0180   1000           00456  BCF FLAGSMES       ,0 ;DISPLAY DE MES   EN OFF 
+0181   1400           00457  BSF FLAGSALARMA    ,0 ;DISPLAY DE ALM   EN ON 
+0182   1400           00458  BSF FLAGCOUNTDOWN   ,0 ;DISPLAY DE ALM   EN OFF
+0183   2???           00459  CALL SUMA_ESTADO
+0184   2???           00460  CALL INCREMENTUNOS
+0185   1800           00461  BTFSC TEMPALARMA,0
+Message[305]: Using default destination of 1 (file).
+0186   0A??           00462  INCF ESTADO
+0187   2???           00463  CALL  CHANGEALARMA
+0188   1E86           00464  BTFSS PORTB ,RB5
+0189   2???           00465  CALL  ALARMADUDU
+018A   2???           00466  CALL  ALARMACERO
+018B   2???           00467  GOTO  ESTADOS 
+018C   2???           00468  GOTO  LOOP_ALARMA
+                      00469  ;*****************************************************************************
+                      00470  ;/////////////////////////////////////////////////////////////////////////////
+                      00471  ;*****************************************************************************
+Warning[207]: Found label after column 1. (RESETLOOP)
+018D                  00472  RESETLOOP:
+018D   1000           00473  BCF   FLAGSHORAS     ,0 ;DISPLAY DE HORAS EN OFF
+018E   1000           00474  BCF   FLAGSMES       ,0 ;DISPLAY DE MES   EN OFF 
+018F   1000           00475  BCF   FLAGSALARMA    ,0 ;DISPLAY DE ALM   EN OFF
+0190   1000           00476  BCF   FLAGCOUNTDOWN   ,0 ;DISPLAY DE ALM   EN OFF
+Message[305]: Using default destination of 1 (file).
+0191   0A??           00477  INCF  ALARMA_SU
+0192   01??           00478  CLRF  TEMPALARMA
+0193   1286           00479  BCF   PORTB, RB5
+0194   01??           00480  CLRF  ESTADO  
+0195   2???           00481  GOTO  ESTADOS 
+0196   2???           00482  GOTO  RESETLOOP
+                      00483 ;******************************************************************************
+                      00484 ;////////////////////////////////REGULAOR ///////////////////////////////////
+                      00485 ;*****************************************************************************
+                      00486  ; los reguladores de tiempo respectivos para cada contador y estos se llamanan en el 
+                      00487  ; isr para que funcionen siempre 
+0197                  00488 TIMER1S
+Warning[203]: Found opcode in column 1. (MOVF)
+0197   08??           00489 MOVF CONTADOR1,0
+Warning[203]: Found opcode in column 1. (SUBLW)
+0198   3C02           00490 SUBLW .2
+Warning[203]: Found opcode in column 1. (BTFSC)
+0199   1903           00491 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+019A   2???           00492 GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+019B   0008           00493 RETURN 
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+019C   0A??           00494 INCF CONTSEG
+Warning[203]: Found opcode in column 1. (CLRF)
+019D   01??           00495 CLRF CONTADOR1
+Warning[203]: Found opcode in column 1. (MOVF)
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+019E   08??           00496 MOVF CONTSEG,0
+Warning[203]: Found opcode in column 1. (SUBLW)
+019F   3C3C           00497 SUBLW .60
+Warning[203]: Found opcode in column 1. (BTFSC)
+01A0   1903           00498 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+01A1   2???           00499 GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+01A2   0008           00500 RETURN 
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+01A3   0A??           00501 INCF CONTHORAS_H
+Warning[203]: Found opcode in column 1. (CLRF)
+01A4   01??           00502 CLRF CONTSEG 
+Warning[203]: Found opcode in column 1. (RETURN)
+01A5   0008           00503 RETURN  
+01A6                  00504 TIMER_ALARMA_TILL_OFF
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+01A6   0A??           00505 INCF CONTSEGALARMA 
+Warning[203]: Found opcode in column 1. (MOVF)
+01A7   08??           00506 MOVF CONTSEGALARMA,0
+Warning[203]: Found opcode in column 1. (SUBLW)
+01A8   3CFA           00507 SUBLW .250
+Warning[203]: Found opcode in column 1. (BTFSC)
+01A9   1903           00508 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+01AA   2???           00509 GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+01AB   0008           00510 RETURN 
+Warning[203]: Found opcode in column 1. (BSF)
+01AC   1400           00511 BSF TEMPALARMA,0
+Warning[203]: Found opcode in column 1. (RETURN)
+01AD   0008           00512 RETURN
+01AE                  00513 TIMERALRMA 
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+01AE   0A??           00514 INCF CONTALARMA
+Warning[203]: Found opcode in column 1. (MOVF)
+01AF   08??           00515 MOVF CONTALARMA,0
+Warning[203]: Found opcode in column 1. (SUBLW)
+01B0   3C0A           00516 SUBLW .10
+Warning[203]: Found opcode in column 1. (BTFSC)
+01B1   1903           00517 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+01B2   2???           00518 GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+01B3   0008           00519 RETURN 
+Warning[203]: Found opcode in column 1. (CLRF)
+01B4   01??           00520 CLRF CONTALARMA
+Warning[203]: Found opcode in column 1. (DECF)
+Message[305]: Using default destination of 1 (file).
+01B5   03??           00521 DECF ALARMA_SU
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (RETURN)
+01B6   0008           00522 RETURN 
+                      00523  ;******************************************************************************
+                      00524  ;////////////////////////////////ALRMA/////////////////////////////////////////
+                      00525  ;******************************************************************************
+Warning[207]: Found label after column 1. (PRE_CARGA_RESET)
+01B7                  00526   PRE_CARGA_RESET
+01B7   3009           00527   MOVLW .9
+01B8   00??           00528   MOVWF ALARMA_SU
+Message[305]: Using default destination of 1 (file).
+01B9   03??           00529   DECF  ALARMA_SD
+01BA   01??           00530   CLRF CONTALARMA
+01BB   0008           00531   RETURN
+Warning[207]: Found label after column 1. (PRE_CARGA1)
+01BC                  00532   PRE_CARGA1
+01BC   3009           00533   MOVLW .9
+01BD   00??           00534   MOVWF ALARMA_SU
+Message[305]: Using default destination of 1 (file).
+01BE   03??           00535   DECF ALARMA_SD
+01BF   0008           00536   RETURN
+Warning[207]: Found label after column 1. (PRE_CARGA2)
+01C0                  00537   PRE_CARGA2
+01C0   3005           00538   MOVLW .5
+01C1   00??           00539   MOVWF ALARMA_SD
+Message[305]: Using default destination of 1 (file).
+01C2   03??           00540   DECF ALARMA_MU
+01C3   0008           00541   RETURN
+Warning[207]: Found label after column 1. (PRE_CARGA3)
+01C4                  00542   PRE_CARGA3
+01C4   3009           00543   MOVLW .9
+01C5   00??           00544   MOVWF ALARMA_MU
+Message[305]: Using default destination of 1 (file).
+01C6   03??           00545   DECF ALARMA_MD
+01C7   0008           00546   RETURN
+Warning[207]: Found label after column 1. (PRE_CARGA4)
+01C8                  00547   PRE_CARGA4
+01C8   3000           00548   MOVLW .0
+01C9   00??           00549   MOVWF ALARMA_MD
+01CA   0008           00550   RETURN
+                      00551 ;******************************************************************************* 
+                      00552 ;*******************************************************************************
+Warning[207]: Found label after column 1. (ALARMACERO)
+01CB                  00553  ALARMACERO:
+01CB   08??           00554     MOVF ALARMA_MD,W
+01CC   3C00           00555     SUBLW .0           
+01CD   1903           00556     BTFSC STATUS,Z
+01CE   2???           00557     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+01CF   0008           00558 RETURN   
+01D0   08??           00559     MOVF ALARMA_MU,W
+01D1   3C00           00560     SUBLW .0           
+01D2   1903           00561     BTFSC STATUS,Z
+01D3   2???           00562     GOTO $+2
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (RETURN)
+01D4   0008           00563 RETURN
+01D5   08??           00564     MOVF ALARMA_SD,W
+01D6   3C00           00565     SUBLW .0           
+01D7   1903           00566     BTFSC STATUS,Z
+01D8   2???           00567     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+01D9   0008           00568 RETURN
+01DA   08??           00569     MOVF ALARMA_SU,W
+01DB   3C00           00570     SUBLW .0           
+01DC   1903           00571     BTFSC STATUS,Z
+01DD   1686           00572     BSF   PORTB   ,RB5
+01DE   0008           00573  RETURN 
+                      00574 ;******************************************************************************* 
+                      00575 ;******************************************************************************* 
+                      00576 ;******************************************************************************* 
+Warning[207]: Found label after column 1. (ALARMADUDU)
+01DF                  00577  ALARMADUDU:
+01DF   1A80           00578     BTFSC ALARMA_SU,5
+01E0   2???           00579     GOTO PRE_CARGA_RESET
+01E1   1A80           00580     BTFSC ALARMA_SD,5
+01E2   2???           00581     GOTO PRE_CARGA2
+01E3   1A80           00582     BTFSC ALARMA_MU,5
+01E4   2???           00583     GOTO PRE_CARGA3
+01E5   1A80           00584     BTFSC ALARMA_MD,5
+01E6   2???           00585     GOTO PRE_CARGA3  
+01E7   0008           00586     RETURN 
+                      00587 ;*******************************************************************************  
+                      00588 ;*******************************************************************************  
+                      00589 ;*******************************************************************************  
+01E8                  00590 ALARMADADA: 
+01E8   1A80           00591     BTFSC ALARMA_SU,5
+01E9   2???           00592     GOTO PRE_CARGA_RESET
+01EA   08??           00593     MOVF ALARMA_SU,W
+01EB   3C0A           00594     SUBLW .10   
+01EC   1903           00595     BTFSC STATUS,Z  
+01ED   2???           00596     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+01EE   0008           00597 RETURN 
+01EF   1A80           00598     BTFSC ALARMA_SD,5
+01F0   2???           00599     GOTO PRE_CARGA2
+01F1   01??           00600      CLRF ALARMA_SU
+Message[305]: Using default destination of 1 (file).
+01F2   0A??           00601      INCF ALARMA_SD
+01F3   08??           00602      MOVF ALARMA_SD,W
+01F4   3C06           00603      SUBLW .6           
+01F5   1903           00604      BTFSC STATUS,Z
+01F6   2???           00605     GOTO $+2 
+Warning[203]: Found opcode in column 1. (RETURN)
+01F7   0008           00606 RETURN 
+01F8   1A80           00607     BTFSC ALARMA_MU,5
+01F9   2???           00608     GOTO PRE_CARGA3
+01FA   01??           00609     CLRF ALARMA_SU
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01FB   01??           00610     CLRF ALARMA_SD
+Message[305]: Using default destination of 1 (file).
+01FC   0A??           00611      INCF ALARMA_MU
+01FD   08??           00612      MOVF ALARMA_MU,W
+01FE   3C09           00613      SUBLW .9           
+01FF   1903           00614      BTFSC STATUS,Z
+0200   2???           00615     GOTO $+2 
+Warning[203]: Found opcode in column 1. (RETURN)
+0201   0008           00616 RETURN
+0202   01??           00617     CLRF ALARMA_SU
+0203   01??           00618     CLRF ALARMA_SD
+0204   01??           00619     CLRF ALARMA_MU
+Message[305]: Using default destination of 1 (file).
+0205   0A??           00620     INCF ALARMA_MD
+0206   08??           00621     MOVF ALARMA_MD,W
+0207   3C09           00622     SUBLW .9           
+0208   1903           00623     BTFSC STATUS,Z
+0209   2???           00624     GOTO $+2 
+Warning[203]: Found opcode in column 1. (RETURN)
+020A   0008           00625 RETURN
+020B   01??           00626     CLRF ALARMA_SU
+020C   01??           00627     CLRF ALARMA_SD
+020D   01??           00628     CLRF ALARMA_MU
+020E   01??           00629     CLRF ALARMA_MD
+Warning[203]: Found opcode in column 1. (RETURN)
+020F   0008           00630 RETURN 
+                      00631 ;*******************************************************************************    
+                      00632 ;**********************************SUMA*****************************************
+                      00633 ;******************************************************************************* 
+                      00634  
+                      00635 ; botones con sus respectivos antirebote 
+Warning[207]: Found label after column 1. (SUMA_ESTADO)
+0210                  00636  SUMA_ESTADO
+0210   1283           00637   BCF    STATUS, RP0
+0211   1303           00638   BCF    STATUS, RP1
+0212   1F06           00639   BTFSS  PORTB , RB6
+0213   0008           00640   RETURN 
+0214   1B06           00641   BTFSC  PORTB , RB6
+0215   2???           00642   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+0216   0A??           00643   INCF   ESTADO 
+0217   0008           00644   RETURN   
+Warning[207]: Found label after column 1. (SUMA)
+0218                  00645  SUMA                  ;SUMA DE MESE EN MODO EDIT
+0218   1283           00646   BCF    STATUS, RP0
+0219   1303           00647   BCF    STATUS, RP1
+021A   1C05           00648   BTFSS  PORTA , RA0
+021B   0008           00649   RETURN 
+021C   1805           00650   BTFSC  PORTA , RA0
+021D   2???           00651   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+021E   0A??           00652   INCF   NIBBLE_DL 
+021F   0008           00653   RETURN
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[207]: Found label after column 1. (SUMA_)
+0220                  00654  SUMA_
+0220   1283           00655   BCF    STATUS, RP0
+0221   1303           00656   BCF    STATUS, RP1
+0222   1C85           00657   BTFSS  PORTA , RA1
+0223   0008           00658   RETURN 
+0224   1885           00659   BTFSC  PORTA , RA1
+0225   2???           00660   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+0226   0A??           00661   INCF   CONTDIA  
+0227   0008           00662   RETURN   
+Warning[207]: Found label after column 1. (MEN)
+0228                  00663   MEN                  ;RESTA DE MESE EN MODO EDIT
+0228   1283           00664   BCF    STATUS, RP0
+0229   1303           00665   BCF    STATUS, RP1
+022A   1D05           00666   BTFSS  PORTA , RA2
+022B   0008           00667   RETURN 
+022C   1905           00668   BTFSC  PORTA , RA2
+022D   2???           00669   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+022E   03??           00670   DECF   CONTDIA
+022F   0008           00671   RETURN
+Warning[207]: Found label after column 1. (MEN_)
+0230                  00672   MEN_
+0230   1283           00673   BCF    STATUS, RP0
+0231   1303           00674   BCF    STATUS, RP1
+0232   1D85           00675   BTFSS  PORTA , RA3
+0233   0008           00676   RETURN 
+0234   1985           00677   BTFSC  PORTA , RA3
+0235   2???           00678   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+0236   03??           00679   DECF   NIBBLE_DL  
+0237   0008           00680   RETURN
+Warning[207]: Found label after column 1. (SUMA2)
+0238                  00681  SUMA2              ;SUMA EN MINUTOS EN MODO EDIT 
+0238   1283           00682   BCF    STATUS, RP0
+0239   1303           00683   BCF    STATUS, RP1
+023A   1C05           00684   BTFSS  PORTA , RA0
+023B   0008           00685   RETURN 
+023C   1805           00686   BTFSC  PORTA , RA0
+023D   2???           00687   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+023E   0A??           00688   INCF   CONTHORAS_H
+023F   0008           00689   RETURN
+Warning[207]: Found label after column 1. (SUMA2_)
+0240                  00690  SUMA2_
+0240   1283           00691   BCF    STATUS, RP0
+0241   1303           00692   BCF    STATUS, RP1
+0242   1C85           00693   BTFSS  PORTA , RA1
+0243   0008           00694   RETURN 
+0244   1885           00695   BTFSC  PORTA , RA1
+0245   2???           00696   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0246   0A??           00697   INCF   CONTHORAS
+Warning[207]: Found label after column 1. (MEN2)
+0247                  00698  MEN2               ;SUMA EN MINUTOS EN MODO EDIT 
+0247   1283           00699   BCF    STATUS, RP0
+0248   1303           00700   BCF    STATUS, RP1
+0249   1D05           00701   BTFSS  PORTA , RA2
+024A   0008           00702   RETURN 
+024B   1905           00703   BTFSC  PORTA , RA2
+024C   2???           00704   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+024D   03??           00705   DECF   CONTHORAS
+024E   0008           00706   RETURN
+Warning[207]: Found label after column 1. (MEN2_)
+024F                  00707   MEN2_
+024F   1283           00708   BCF    STATUS, RP0
+0250   1303           00709   BCF    STATUS, RP1
+0251   1D85           00710   BTFSS  PORTA , RA3
+0252   0008           00711   RETURN 
+0253   1985           00712   BTFSC  PORTA , RA3
+0254   2???           00713   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+0255   03??           00714   DECF  CONTHORAS_H  
+0256   0008           00715   RETURN 
+Warning[207]: Found label after column 1. (SUMAA)
+0257                  00716  SUMAA              ;SUMA EN MINUTOS EN MODO EDIT 
+0257   1283           00717   BCF    STATUS, RP0
+0258   1303           00718   BCF    STATUS, RP1
+0259   1C05           00719   BTFSS  PORTA , RA0
+025A   0008           00720   RETURN 
+025B   1805           00721   BTFSC  PORTA , RA0
+025C   2???           00722   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+025D   0A??           00723   INCF    ALARMA_SU 
+025E   0008           00724   RETURN
+Warning[207]: Found label after column 1. (SUMAA_)
+025F                  00725   SUMAA_
+025F   1283           00726   BCF    STATUS, RP0
+0260   1303           00727   BCF    STATUS, RP1
+0261   1C85           00728   BTFSS  PORTA , RA1
+0262   0008           00729   RETURN 
+0263   1885           00730   BTFSC  PORTA , RA1
+0264   2???           00731   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+0265   0A??           00732   INCF    ALARMA_MU 
+Warning[207]: Found label after column 1. (MENA)
+0266                  00733  MENA               ;SUMA EN MINUTOS EN MODO EDIT 
+0266   1283           00734   BCF    STATUS, RP0
+0267   1303           00735   BCF    STATUS, RP1
+0268   1D05           00736   BTFSS  PORTA , RA2
+0269   0008           00737   RETURN 
+026A   1905           00738   BTFSC  PORTA , RA2
+026B   2???           00739   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+026C   03??           00740   DECF   ALARMA_MU
+026D   0008           00741   RETURN 
+Warning[207]: Found label after column 1. (MENA_)
+026E                  00742   MENA_
+026E   1283           00743   BCF    STATUS, RP0
+026F   1303           00744   BCF    STATUS, RP1
+0270   1D85           00745   BTFSS  PORTA , RA3
+0271   0008           00746   RETURN 
+0272   1985           00747   BTFSC  PORTA , RA3
+0273   2???           00748   GOTO   $-1
+Message[305]: Using default destination of 1 (file).
+0274   03??           00749   DECF   ALARMA_SU   
+0275   0008           00750   RETURN 
+Warning[207]: Found label after column 1. (CHANGEALARMA)
+0276                  00751   CHANGEALARMA
+0276   1283           00752   BCF    STATUS, RP0
+0277   1303           00753   BCF    STATUS, RP1
+0278   1C85           00754   BTFSS  PORTA , RA1
+0279   0008           00755   RETURN 
+027A   1885           00756   BTFSC  PORTA , RA1
+027B   2???           00757   GOTO   $-1
+027C   1400           00758   BSF   TEMPALARMA ,0
+                      00759  ;******************************************************************************
+                      00760  ;////////////////////////////////HORA//////////////////////////////////////////
+                      00761  ;******************************************************************************
+                      00762  ;
+                      00763  ;esta parte hace el underflow dejando que todo tenga un valor cargado si la variable que 
+                      00764  ;se decrementa pasa de 0 
+Warning[207]: Found label after column 1. (UNDERZERO)
+027D                  00765  UNDERZERO 
+027D   3017           00766  MOVLW .23
+027E   00??           00767  MOVWF CONTHORAS
+027F   0008           00768  RETURN
+Warning[207]: Found label after column 1. (UNDERZERO2)
+0280                  00769  UNDERZERO2 
+0280   303B           00770  MOVLW .59
+0281   00??           00771  MOVWF CONTHORAS_H
+0282   0008           00772  RETURN
+                      00773  ;los incrementos de la horas no cambian de valor solo los minutos por ennde se puede 
+                      00774  ; dejar fijo los valores de las hora y que con el tiempo se sumen los minutos 
+                      00775  ;el uso de una tabla fue la clave igual que los meses 
+                      00776  ;
+Warning[207]: Found label after column 1. (INCREMENTUNOS)
+0283                  00777  INCREMENTUNOS 
+0283   2???           00778  CALL MES
+0284   2???           00779  CALL HORAS_L
+0285   00??           00780  MOVWF TEMPHORAS_H
+0286   0E??           00781  SWAPF TEMPHORAS_H,W
+0287   00??           00782  MOVWF ESPE4
+0288   300F           00783  MOVLW 0X0F
+0289   05??           00784  ANDWF ESPE4,W
+028A   00??           00785  MOVWF NIBBLEH
+028B   2???           00786  CALL HORAS_L
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+028C   390F           00787  ANDLW B'00001111';
+028D   00??           00788  MOVWF NIBBLEL
+                      00789  
+028E   2???           00790  CALL HORAS
+028F   00??           00791  MOVWF TEMPHORAS
+0290   0E??           00792  SWAPF TEMPHORAS,W
+0291   00??           00793  MOVWF ESPE
+0292   300F           00794  MOVLW 0X0F
+0293   05??           00795  ANDWF ESPE,W
+0294   00??           00796  MOVWF NIBBLE_HH
+0295   2???           00797  CALL HORAS 
+0296   390F           00798  ANDLW B'00001111';
+0297   00??           00799  MOVWF NIBBLE_HL
+0298   0008           00800  RETURN 
+                      00801  
+Warning[207]: Found label after column 1. (HORARESET2)
+0299                  00802  HORARESET2
+0299   01??           00803  CLRF CONTHORAS_H
+Message[305]: Using default destination of 1 (file).
+029A   0A??           00804  INCF CONTHORAS
+Message[305]: Using default destination of 1 (file).
+029B   0A??           00805  INCF CONTHORAS_H
+029C   0008           00806  RETURN 
+                      00807  
+Warning[207]: Found label after column 1. (HORARESET)
+029D                  00808  HORARESET
+029D   01??           00809  CLRF CONTHORAS
+029E   01??           00810  CLRF NIBBLE_HL
+Message[305]: Using default destination of 1 (file).
+029F   0A??           00811  INCF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+02A0   0A??           00812  INCF CONTHORAS
+02A1   0008           00813  RETURN 
+                      00814 
+                      00815  ;******************************************************************************
+                      00816  ;////////////////////////////////MES//////////////////////////////////////////
+                      00817  ;******************************************************************************
+Warning[207]: Found label after column 1. (MESRESET)
+02A2                  00818   MESRESET
+02A2   01??           00819  CLRF CONTHORAS
+02A3   01??           00820  CLRF NIBBLE_ML
+Message[305]: Using default destination of 1 (file).
+02A4   0A??           00821  INCF CONTMES_H
+02A5   0008           00822  RETURN 
+Warning[207]: Found label after column 1. (MESRESET_H)
+02A6                  00823  MESRESET_H
+02A6   01??           00824  CLRF CONTHORAS
+02A7   01??           00825  CLRF CONTMES_H
+02A8   01??           00826  CLRF NIBBLE_MH
+02A9   0008           00827  RETURN 
+                      00828  ; se utilizo un codigo base para el mes de enero que se copia para todos los meses
+                      00829  ; lo que cambia en cada mes es los dias es lo unico que varia durante el me por ende se puede 
+                      00830  ;cargar un valor fijo a las ariables de cuentan el mes 
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[207]: Found label after column 1. (ENE)
+02AA                  00831  ENE:    
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MES)
+02AA                  00832  INCREMENTUNOS_MES
+02AA   3000           00833  MOVLW .0                 ;CAMBIO DE MES_L
+02AB   00??           00834  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+02AC   2???           00835 CALL MES_L
+02AD   00??           00836  MOVWF TEMPMES_L
+02AE   390F           00837  ANDLW B'00001111';
+02AF   00??           00838  MOVWF NIBBLE_ML
+02B0   3000           00839  MOVLW .0                 ;CAMBIO DE MES_H
+02B1   00??           00840  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+02B2   2???           00841 CALL MES_H
+02B3   00??           00842  MOVWF TEMPMES_H
+02B4   390F           00843  ANDLW B'00001111';
+02B5   00??           00844  MOVWF NIBBLE_MH
+02B6                  00845 HERE:
+02B6   08??           00846     MOVF NIBBLE_DH,W
+02B7   3C03           00847     SUBLW .3   
+02B8   1903           00848     BTFSC STATUS,Z
+02B9   2???           00849     GOTO DIASEXTRA
+02BA   08??           00850     MOVF NIBBLE_DL,W
+02BB   3C09           00851     SUBLW .9   
+02BC   1903           00852     BTFSC STATUS,Z  
+02BD   2???           00853     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+02BE   0008           00854 RETURN 
+02BF   01??           00855      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+02C0   0A??           00856      INCF NIBBLE_DH
+02C1   08??           00857      MOVF NIBBLE_DH,W
+02C2   3C03           00858      SUBLW .3           
+02C3   1903           00859      BTFSC STATUS,Z
+02C4   2???           00860      GOTO HERE
+02C5   0008           00861  RETURN 
+02C6                  00862 DIASEXTRA
+02C6   08??           00863     MOVF NIBBLE_DL,W
+02C7   3C02           00864     SUBLW .2   
+02C8   1903           00865     BTFSC STATUS,Z  
+02C9   2???           00866     GOTO MESCERO 
+Warning[203]: Found opcode in column 1. (RETURN)
+02CA   0008           00867 RETURN 
+Warning[207]: Found label after column 1. (MESCERO)
+02CB                  00868  MESCERO 
+02CB   01??           00869  CLRF NIBBLE_DL
+02CC   01??           00870  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+02CD   0A??           00871  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+02CE   0A??           00872  INCF NIBBLE_DL
+02CF   0008           00873  RETURN     
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 22
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[207]: Found label after column 1. (FEB)
+02D0                  00874  FEB:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESFEB)
+02D0                  00875     INCREMENTUNOS_MESFEB
+02D0   3001           00876  MOVLW .1                     
+02D1   00??           00877  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+02D2   2???           00878 CALL MES_L
+02D3   00??           00879  MOVWF TEMPMES_L
+02D4   390F           00880  ANDLW B'00001111';
+02D5   00??           00881  MOVWF NIBBLE_ML                 
+02D6   3000           00882  MOVLW .0
+02D7   00??           00883  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+02D8   2???           00884 CALL MES_H
+02D9   00??           00885  MOVWF TEMPMES_H
+02DA   390F           00886  ANDLW B'00001111';
+02DB   00??           00887  MOVWF NIBBLE_MH
+02DC                  00888 HEREFEB:
+02DC   08??           00889     MOVF NIBBLE_DH,W
+02DD   3C02           00890     SUBLW .2   
+02DE   1903           00891     BTFSC STATUS,Z
+02DF   2???           00892     GOTO DIASEXTRAFEB
+02E0   08??           00893     MOVF NIBBLE_DL,W
+02E1   3C09           00894     SUBLW .9   
+02E2   1903           00895     BTFSC STATUS,Z  
+02E3   2???           00896     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+02E4   0008           00897 RETURN 
+02E5   01??           00898      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+02E6   0A??           00899      INCF NIBBLE_DH
+02E7   08??           00900      MOVF NIBBLE_DH,W
+02E8   3C02           00901      SUBLW .2           
+02E9   1903           00902      BTFSC STATUS,Z
+02EA   2???           00903      GOTO HEREFEB
+02EB   0008           00904  RETURN 
+02EC                  00905 DIASEXTRAFEB
+02EC   08??           00906     MOVF NIBBLE_DL,W
+02ED   3C09           00907     SUBLW .9   
+02EE   1903           00908     BTFSC STATUS,Z  
+02EF   2???           00909     GOTO MESCEROFEB 
+Warning[203]: Found opcode in column 1. (RETURN)
+02F0   0008           00910 RETURN 
+Warning[207]: Found label after column 1. (MESCEROFEB)
+02F1                  00911  MESCEROFEB 
+02F1   01??           00912  CLRF NIBBLE_DL
+02F2   01??           00913  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+02F3   0A??           00914  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+02F4   0A??           00915  INCF NIBBLE_DL
+02F5   0008           00916  RETURN 
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 23
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00917 
+Warning[207]: Found label after column 1. (MAR)
+02F6                  00918  MAR:                    
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESMAR)
+02F6                  00919     INCREMENTUNOS_MESMAR
+02F6   3002           00920  MOVLW .2                
+02F7   00??           00921  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+02F8   2???           00922 CALL MES_L
+02F9   00??           00923  MOVWF TEMPMES_L
+02FA   390F           00924  ANDLW B'00001111';
+02FB   00??           00925  MOVWF NIBBLE_ML
+02FC   3000           00926  MOVLW .0                
+02FD   00??           00927  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+02FE   2???           00928 CALL MES_H
+02FF   00??           00929  MOVWF TEMPMES_H
+0300   390F           00930  ANDLW B'00001111';
+0301   00??           00931  MOVWF NIBBLE_MH 
+0302                  00932 HEREMAR:                 
+0302   08??           00933     MOVF NIBBLE_DH,W
+0303   3C03           00934     SUBLW .3   
+0304   1903           00935     BTFSC STATUS,Z
+0305   2???           00936     GOTO DIASEXTRAMAR    
+0306   08??           00937     MOVF NIBBLE_DL,W
+0307   3C09           00938     SUBLW .9   
+0308   1903           00939     BTFSC STATUS,Z  
+0309   2???           00940     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+030A   0008           00941 RETURN 
+030B   01??           00942      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+030C   0A??           00943      INCF NIBBLE_DH
+030D   08??           00944      MOVF NIBBLE_DH,W
+030E   3C03           00945      SUBLW .3           
+030F   1903           00946      BTFSC STATUS,Z
+0310   2???           00947      GOTO HEREMAR         
+0311   0008           00948  RETURN 
+0312                  00949 DIASEXTRAMAR                 
+0312   08??           00950     MOVF NIBBLE_DL,W
+0313   3C02           00951     SUBLW .2   
+0314   1903           00952     BTFSC STATUS,Z  
+0315   2???           00953     GOTO MESCEROMAR         
+Warning[203]: Found opcode in column 1. (RETURN)
+0316   0008           00954 RETURN 
+Warning[207]: Found label after column 1. (MESCEROMAR)
+0317                  00955  MESCEROMAR                 
+0317   01??           00956  CLRF NIBBLE_DL
+0318   01??           00957  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+0319   0A??           00958  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+031A   0A??           00959  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 24
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+031B   0008           00960  RETURN 
+Warning[207]: Found label after column 1. (ABR)
+031C                  00961  ABR:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESABRI)
+031C                  00962         INCREMENTUNOS_MESABRI  
+031C   3003           00963  MOVLW .3                      
+031D   00??           00964  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+031E   2???           00965 CALL MES_L
+031F   00??           00966  MOVWF TEMPMES_L
+0320   390F           00967  ANDLW B'00001111';
+0321   00??           00968  MOVWF NIBBLE_ML
+0322   3000           00969  MOVLW .0               
+0323   00??           00970  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+0324   2???           00971 CALL MES_H
+0325   00??           00972  MOVWF TEMPMES_H
+0326   390F           00973  ANDLW B'00001111';
+0327   00??           00974  MOVWF NIBBLE_MH
+0328                  00975 HEREABRI:                 
+0328   08??           00976     MOVF NIBBLE_DH,W
+0329   3C03           00977     SUBLW .3   
+032A   1903           00978     BTFSC STATUS,Z
+032B   2???           00979     GOTO DIASEXTRAABRI    
+032C   08??           00980     MOVF NIBBLE_DL,W
+032D   3C09           00981     SUBLW .9   
+032E   1903           00982     BTFSC STATUS,Z  
+032F   2???           00983     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+0330   0008           00984 RETURN 
+0331   01??           00985      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+0332   0A??           00986      INCF NIBBLE_DH
+0333   08??           00987      MOVF NIBBLE_DH,W
+0334   3C03           00988      SUBLW .3           
+0335   1903           00989      BTFSC STATUS,Z
+0336   2???           00990      GOTO HEREABRI          
+0337   0008           00991  RETURN 
+0338                  00992 DIASEXTRAABRI                 
+0338   08??           00993     MOVF NIBBLE_DL,W
+0339   3C01           00994     SUBLW .1   
+033A   1903           00995     BTFSC STATUS,Z  
+033B   2???           00996     GOTO MESCEROABRI          
+Warning[203]: Found opcode in column 1. (RETURN)
+033C   0008           00997 RETURN 
+Warning[207]: Found label after column 1. (MESCEROABRI)
+033D                  00998  MESCEROABRI                 
+033D   01??           00999  CLRF NIBBLE_DL
+033E   01??           01000  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+033F   0A??           01001  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+0340   0A??           01002  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 25
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0341   0008           01003     RETURN
+Warning[207]: Found label after column 1. (MAY)
+0342                  01004  MAY:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESMAY)
+0342                  01005     INCREMENTUNOS_MESMAY  
+0342   3004           01006  MOVLW .4                 
+0343   00??           01007  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+0344   2???           01008 CALL MES_L
+0345   00??           01009  MOVWF TEMPMES_L
+0346   390F           01010  ANDLW B'00001111';
+0347   00??           01011  MOVWF NIBBLE_ML
+0348   3000           01012  MOVLW .0                
+0349   00??           01013  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+034A   2???           01014 CALL MES_H
+034B   00??           01015  MOVWF TEMPMES_H
+034C   390F           01016  ANDLW B'00001111';
+034D   00??           01017  MOVWF NIBBLE_MH
+034E                  01018 HEREMAY:                 
+034E   08??           01019     MOVF NIBBLE_DH,W
+034F   3C03           01020     SUBLW .3   
+0350   1903           01021     BTFSC STATUS,Z
+0351   2???           01022     GOTO DIASEXTRAMAY    
+0352   08??           01023     MOVF NIBBLE_DL,W
+0353   3C09           01024     SUBLW .9   
+0354   1903           01025     BTFSC STATUS,Z  
+0355   2???           01026     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+0356   0008           01027 RETURN 
+0357   01??           01028      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+0358   0A??           01029      INCF NIBBLE_DH
+0359   08??           01030      MOVF NIBBLE_DH,W
+035A   3C03           01031      SUBLW .3           
+035B   1903           01032      BTFSC STATUS,Z
+035C   2???           01033      GOTO HEREMAY            
+035D   0008           01034  RETURN 
+035E                  01035 DIASEXTRAMAY                 
+035E   08??           01036     MOVF NIBBLE_DL,W
+035F   3C02           01037     SUBLW .2   
+0360   1903           01038     BTFSC STATUS,Z  
+0361   2???           01039     GOTO MESCEROMAY          
+Warning[203]: Found opcode in column 1. (RETURN)
+0362   0008           01040 RETURN 
+Warning[207]: Found label after column 1. (MESCEROMAY)
+0363                  01041  MESCEROMAY                 
+0363   01??           01042  CLRF NIBBLE_DL
+0364   01??           01043  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+0365   0A??           01044  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+0366   0A??           01045  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 26
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0367   0008           01046     RETURN
+Warning[207]: Found label after column 1. (JUN)
+0368                  01047  JUN:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESJUN)
+0368                  01048     INCREMENTUNOS_MESJUN  
+0368   3005           01049  MOVLW .5                          
+0369   00??           01050  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+036A   2???           01051 CALL MES_L
+036B   00??           01052  MOVWF TEMPMES_L
+036C   390F           01053  ANDLW B'00001111';
+036D   00??           01054  MOVWF NIBBLE_ML                 
+036E   3000           01055  MOVLW .0
+036F   00??           01056  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+0370   2???           01057 CALL MES_H
+0371   00??           01058  MOVWF TEMPMES_H
+0372   390F           01059  ANDLW B'00001111';
+0373   00??           01060  MOVWF NIBBLE_MH
+0374                  01061 HEREJUN:                 
+0374   08??           01062     MOVF NIBBLE_DH,W
+0375   3C03           01063     SUBLW .3   
+0376   1903           01064     BTFSC STATUS,Z
+0377   2???           01065     GOTO DIASEXTRAJUN    
+0378   08??           01066     MOVF NIBBLE_DL,W
+0379   3C09           01067     SUBLW .9   
+037A   1903           01068     BTFSC STATUS,Z  
+037B   2???           01069     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+037C   0008           01070 RETURN 
+037D   01??           01071      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+037E   0A??           01072      INCF NIBBLE_DH
+037F   08??           01073      MOVF NIBBLE_DH,W
+0380   3C03           01074      SUBLW .3           
+0381   1903           01075      BTFSC STATUS,Z
+0382   2???           01076      GOTO HEREJUN           
+0383   0008           01077  RETURN 
+0384                  01078 DIASEXTRAJUN                 
+0384   08??           01079     MOVF NIBBLE_DL,W
+0385   3C01           01080     SUBLW .1   
+0386   1903           01081     BTFSC STATUS,Z  
+0387   2???           01082     GOTO MESCEROJUN        
+Warning[203]: Found opcode in column 1. (RETURN)
+0388   0008           01083 RETURN 
+Warning[207]: Found label after column 1. (MESCEROJUN)
+0389                  01084  MESCEROJUN                 
+0389   01??           01085  CLRF NIBBLE_DL
+038A   01??           01086  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+038B   0A??           01087  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+038C   0A??           01088  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 27
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+038D   0008           01089     RETURN
+Warning[207]: Found label after column 1. (JUL)
+038E                  01090  JUL:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESJUL)
+038E                  01091         INCREMENTUNOS_MESJUL  
+038E   3006           01092  MOVLW .6                     
+038F   00??           01093  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+0390   2???           01094 CALL MES_L
+0391   00??           01095  MOVWF TEMPMES_L
+0392   390F           01096  ANDLW B'00001111';
+0393   00??           01097  MOVWF NIBBLE_ML
+0394   3000           01098  MOVLW .0
+0395   00??           01099  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+0396   2???           01100 CALL MES_H
+0397   00??           01101  MOVWF TEMPMES_H
+0398   390F           01102  ANDLW B'00001111';
+0399   00??           01103  MOVWF NIBBLE_MH
+039A                  01104 HEREJUL:                 
+039A   08??           01105     MOVF NIBBLE_DH,W
+039B   3C03           01106     SUBLW .3   
+039C   1903           01107     BTFSC STATUS,Z
+039D   2???           01108     GOTO DIASEXTRAJUL;    
+039E   08??           01109     MOVF NIBBLE_DL,W
+039F   3C09           01110     SUBLW .9   
+03A0   1903           01111     BTFSC STATUS,Z  
+03A1   2???           01112     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+03A2   0008           01113 RETURN 
+03A3   01??           01114      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+03A4   0A??           01115      INCF NIBBLE_DH
+03A5   08??           01116      MOVF NIBBLE_DH,W
+03A6   3C03           01117      SUBLW .3           
+03A7   1903           01118      BTFSC STATUS,Z
+03A8   2???           01119      GOTO HEREJUL            
+03A9   0008           01120  RETURN 
+03AA                  01121 DIASEXTRAJUL                 
+03AA   08??           01122     MOVF NIBBLE_DL,W
+03AB   3C02           01123     SUBLW .2   
+03AC   1903           01124     BTFSC STATUS,Z  
+03AD   2???           01125     GOTO MESCEROJUL          
+Warning[203]: Found opcode in column 1. (RETURN)
+03AE   0008           01126 RETURN 
+Warning[207]: Found label after column 1. (MESCEROJUL)
+03AF                  01127  MESCEROJUL                  
+03AF   01??           01128  CLRF NIBBLE_DL
+03B0   01??           01129  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+03B1   0A??           01130  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+03B2   0A??           01131  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 28
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+03B3   0008           01132     RETURN
+Warning[207]: Found label after column 1. (AGO)
+03B4                  01133  AGO:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESAGO)
+03B4                  01134        INCREMENTUNOS_MESAGO   
+03B4   3007           01135  MOVLW .7                      
+03B5   00??           01136  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+03B6   2???           01137 CALL MES_L
+03B7   00??           01138  MOVWF TEMPMES_L
+03B8   390F           01139  ANDLW B'00001111';
+03B9   00??           01140  MOVWF NIBBLE_ML
+03BA   3000           01141  MOVLW .0
+03BB   00??           01142  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+03BC   2???           01143 CALL MES_H
+03BD   00??           01144  MOVWF TEMPMES_H
+03BE   390F           01145  ANDLW B'00001111';
+03BF   00??           01146  MOVWF NIBBLE_MH
+03C0                  01147 HEREAGO:                
+03C0   08??           01148     MOVF NIBBLE_DH,W
+03C1   3C03           01149     SUBLW .3   
+03C2   1903           01150     BTFSC STATUS,Z
+03C3   2???           01151     GOTO DIASEXTRAAGO    
+03C4   08??           01152     MOVF NIBBLE_DL,W
+03C5   3C09           01153     SUBLW .9   
+03C6   1903           01154     BTFSC STATUS,Z  
+03C7   2???           01155     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+03C8   0008           01156 RETURN 
+03C9   01??           01157      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+03CA   0A??           01158      INCF NIBBLE_DH
+03CB   08??           01159      MOVF NIBBLE_DH,W
+03CC   3C03           01160      SUBLW .3           
+03CD   1903           01161      BTFSC STATUS,Z
+03CE   2???           01162      GOTO HEREAGO          
+03CF   0008           01163  RETURN 
+03D0                  01164 DIASEXTRAAGO                 
+03D0   08??           01165     MOVF NIBBLE_DL,W
+03D1   3C02           01166     SUBLW .2   
+03D2   1903           01167     BTFSC STATUS,Z  
+03D3   2???           01168     GOTO MESCEROAGO          
+Warning[203]: Found opcode in column 1. (RETURN)
+03D4   0008           01169 RETURN 
+Warning[207]: Found label after column 1. (MESCEROAGO)
+03D5                  01170  MESCEROAGO                 
+03D5   01??           01171  CLRF NIBBLE_DL
+03D6   01??           01172  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+03D7   0A??           01173  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+03D8   0A??           01174  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 29
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+03D9   0008           01175     RETURN
+Warning[207]: Found label after column 1. (SEP)
+03DA                  01176  SEP:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESSEP)
+03DA                  01177             INCREMENTUNOS_MESSEP  
+03DA   3008           01178  MOVLW .8                      
+03DB   00??           01179  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+03DC   2???           01180 CALL MES_L
+03DD   00??           01181  MOVWF TEMPMES_L
+03DE   390F           01182  ANDLW B'00001111';
+03DF   00??           01183  MOVWF NIBBLE_ML
+03E0   3000           01184  MOVLW .0
+03E1   00??           01185  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+03E2   2???           01186 CALL MES_H
+03E3   00??           01187  MOVWF TEMPMES_H
+03E4   390F           01188  ANDLW B'00001111';
+03E5   00??           01189  MOVWF NIBBLE_MH
+03E6                  01190 HERESEP:                 
+03E6   08??           01191     MOVF NIBBLE_DH,W
+03E7   3C03           01192     SUBLW .3   
+03E8   1903           01193     BTFSC STATUS,Z
+03E9   2???           01194     GOTO DIASEXTRASEP;    
+03EA   08??           01195     MOVF NIBBLE_DL,W
+03EB   3C09           01196     SUBLW .9   
+03EC   1903           01197     BTFSC STATUS,Z  
+03ED   2???           01198     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+03EE   0008           01199 RETURN 
+03EF   01??           01200      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+03F0   0A??           01201      INCF NIBBLE_DH
+03F1   08??           01202      MOVF NIBBLE_DH,W
+03F2   3C03           01203      SUBLW .3           
+03F3   1903           01204      BTFSC STATUS,Z
+03F4   2???           01205      GOTO HERESEP            
+03F5   0008           01206  RETURN 
+03F6                  01207 DIASEXTRASEP                 
+03F6   08??           01208     MOVF NIBBLE_DL,W
+03F7   3C02           01209     SUBLW .2   
+03F8   1903           01210     BTFSC STATUS,Z  
+03F9   2???           01211     GOTO MESCEROSEP           
+Warning[203]: Found opcode in column 1. (RETURN)
+03FA   0008           01212 RETURN 
+Warning[207]: Found label after column 1. (MESCEROSEP)
+03FB                  01213  MESCEROSEP                   
+03FB   01??           01214  CLRF NIBBLE_DL
+03FC   01??           01215  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+03FD   0A??           01216  INCF CONTDIA
+Message[305]: Using default destination of 1 (file).
+03FE   0A??           01217  INCF NIBBLE_DL
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 30
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+03FF   0008           01218     RETURN
+Warning[207]: Found label after column 1. (OCT)
+0400                  01219  OCT:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESOCT)
+0400                  01220            INCREMENTUNOS_MESOCT  
+                      01221                  
+0400   3009           01222  MOVLW .9                      
+0401   00??           01223  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+0402   2???           01224 CALL MES_L
+0403   00??           01225  MOVWF TEMPMES_L
+0404   390F           01226  ANDLW B'00001111';
+0405   00??           01227  MOVWF NIBBLE_ML
+                      01228                  
+0406   3001           01229  MOVLW .1
+0407   00??           01230  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+0408   2???           01231 CALL MES_H
+0409   00??           01232  MOVWF TEMPMES_H
+040A   390F           01233  ANDLW B'00001111';
+040B   00??           01234  MOVWF NIBBLE_MH
+040C                  01235 HEREOCT:                
+040C   08??           01236     MOVF NIBBLE_DH,W
+040D   3C03           01237     SUBLW .3   
+040E   1903           01238     BTFSC STATUS,Z
+040F   2???           01239     GOTO DIASEXTRAOCT   
+0410   08??           01240     MOVF NIBBLE_DL,W
+0411   3C09           01241     SUBLW .9   
+0412   1903           01242     BTFSC STATUS,Z  
+0413   2???           01243     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+0414   0008           01244 RETURN 
+0415   01??           01245      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+0416   0A??           01246      INCF NIBBLE_DH
+0417   08??           01247      MOVF NIBBLE_DH,W
+0418   3C03           01248      SUBLW .3           
+0419   1903           01249      BTFSC STATUS,Z
+041A   2???           01250      GOTO HEREOCT           
+041B   0008           01251  RETURN 
+041C                  01252 DIASEXTRAOCT                 
+041C   08??           01253     MOVF NIBBLE_DL,W
+041D   3C02           01254     SUBLW .2   
+041E   1903           01255     BTFSC STATUS,Z  
+041F   2???           01256     GOTO MESCEROOCT         
+Warning[203]: Found opcode in column 1. (RETURN)
+0420   0008           01257 RETURN 
+Warning[207]: Found label after column 1. (MESCEROOCT)
+0421                  01258  MESCEROOCT                
+0421   01??           01259  CLRF NIBBLE_DL
+0422   01??           01260  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+0423   0A??           01261  INCF CONTDIA
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 31
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Message[305]: Using default destination of 1 (file).
+0424   0A??           01262  INCF NIBBLE_DL
+0425   0008           01263     RETURN
+Warning[207]: Found label after column 1. (NOV)
+0426                  01264  NOV:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESNOV)
+0426                  01265        INCREMENTUNOS_MESNOV           
+0426   3000           01266  MOVLW .0                    
+0427   00??           01267  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+0428   2???           01268 CALL MES_L
+0429   00??           01269  MOVWF TEMPMES_L
+042A   390F           01270  ANDLW B'00001111';
+042B   00??           01271  MOVWF NIBBLE_ML
+042C   3001           01272  MOVLW .1
+042D   00??           01273  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+042E   2???           01274 CALL MES_H
+042F   00??           01275  MOVWF TEMPMES_H
+0430   390F           01276  ANDLW B'00001111';
+0431   00??           01277  MOVWF NIBBLE_MH
+0432                  01278 HERENOV:                 
+0432   08??           01279     MOVF NIBBLE_DH,W
+0433   3C03           01280     SUBLW .3   
+0434   1903           01281     BTFSC STATUS,Z
+0435   2???           01282     GOTO DIASEXTRANOV    
+0436   08??           01283     MOVF NIBBLE_DL,W
+0437   3C09           01284     SUBLW .9   
+0438   1903           01285     BTFSC STATUS,Z  
+0439   2???           01286     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+043A   0008           01287 RETURN 
+043B   01??           01288      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+043C   0A??           01289      INCF NIBBLE_DH
+043D   08??           01290      MOVF NIBBLE_DH,W
+043E   3C03           01291      SUBLW .3           
+043F   1903           01292      BTFSC STATUS,Z
+0440   2???           01293      GOTO HERENOV           
+0441   0008           01294  RETURN 
+0442                  01295 DIASEXTRANOV                 
+0442   08??           01296     MOVF NIBBLE_DL,W
+0443   3C01           01297     SUBLW .1   
+0444   1903           01298     BTFSC STATUS,Z  
+0445   2???           01299     GOTO MESCERONOV          
+Warning[203]: Found opcode in column 1. (RETURN)
+0446   0008           01300 RETURN 
+Warning[207]: Found label after column 1. (MESCERONOV)
+0447                  01301  MESCERONOV                  
+0447   01??           01302  CLRF NIBBLE_DL
+0448   01??           01303  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+0449   0A??           01304  INCF CONTDIA
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 32
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Message[305]: Using default destination of 1 (file).
+044A   0A??           01305  INCF NIBBLE_DL
+044B   0008           01306     RETURN
+Warning[207]: Found label after column 1. (DIC)
+044C                  01307  DIC:
+Warning[207]: Found label after column 1. (INCREMENTUNOS_MESDIC)
+044C                  01308            INCREMENTUNOS_MESDIC        
+044C   3001           01309  MOVLW .1                      
+044D   00??           01310  MOVWF CONTMES_L
+Warning[203]: Found opcode in column 1. (CALL)
+044E   2???           01311 CALL MES_L
+044F   00??           01312  MOVWF TEMPMES_L
+0450   390F           01313  ANDLW B'00001111';
+0451   00??           01314  MOVWF NIBBLE_ML
+                      01315                  
+0452   3001           01316  MOVLW .1
+0453   00??           01317  MOVWF CONTMES_H
+Warning[203]: Found opcode in column 1. (CALL)
+0454   2???           01318 CALL MES_H
+0455   00??           01319  MOVWF TEMPMES_H
+0456   390F           01320  ANDLW B'00001111';
+0457   00??           01321  MOVWF NIBBLE_MH
+0458                  01322 HEREDIC:                 
+0458   08??           01323     MOVF NIBBLE_DH,W
+0459   3C03           01324     SUBLW .3   
+045A   1903           01325     BTFSC STATUS,Z
+045B   2???           01326     GOTO DIASEXTRADIC    
+045C   08??           01327     MOVF NIBBLE_DL,W
+045D   3C09           01328     SUBLW .9   
+045E   1903           01329     BTFSC STATUS,Z  
+045F   2???           01330     GOTO $+2
+Warning[203]: Found opcode in column 1. (RETURN)
+0460   0008           01331 RETURN 
+0461   01??           01332      CLRF NIBBLE_DL
+Message[305]: Using default destination of 1 (file).
+0462   0A??           01333      INCF NIBBLE_DH
+0463   08??           01334      MOVF NIBBLE_DH,W
+0464   3C03           01335      SUBLW .3           
+0465   1903           01336      BTFSC STATUS,Z
+0466   2???           01337      GOTO HEREDIC           
+0467   0008           01338  RETURN 
+0468                  01339 DIASEXTRADIC                 
+0468   08??           01340     MOVF NIBBLE_DL,W
+0469   3C02           01341     SUBLW .2   
+046A   1903           01342     BTFSC STATUS,Z  
+046B   2???           01343     GOTO MESCERODIC         
+Warning[203]: Found opcode in column 1. (RETURN)
+046C   0008           01344 RETURN 
+Warning[207]: Found label after column 1. (MESCERODIC)
+046D                  01345  MESCERODIC                  
+046D   01??           01346  CLRF NIBBLE_DL
+046E   01??           01347  CLRF NIBBLE_DH
+Message[305]: Using default destination of 1 (file).
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 33
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+046F   0A??           01348  INCF NIBBLE_DL
+0470   01??           01349  CLRF CONTDIA
+0471   0008           01350     RETURN 
+                      01351  ;*****************************************************************************
+                      01352  ;////////////////////////////////////LED ITERMITENTES/////////////////////////
+                      01353  ;*****************************************************************************
+Warning[207]: Found label after column 1. (PISHLEDS)
+0472                  01354  PISHLEDS
+Warning[203]: Found opcode in column 1. (BCF)
+0472   1008           01355 BCF   PORTD, RD0
+Warning[203]: Found opcode in column 1. (BCF)
+0473   1188           01356 BCF   PORTD, RD3
+Warning[203]: Found opcode in column 1. (BTFSC)
+0474   1800           01357 BTFSC  CONT2,0
+Warning[203]: Found opcode in column 1. (GOTO)
+0475   2???           01358 GOTO SHOWON
+0476                  01359 SHOWOFF:
+Warning[203]: Found opcode in column 1. (BCF)
+0476   1008           01360 BCF   PORTD, RD0
+Warning[203]: Found opcode in column 1. (BCF)
+0477   1188           01361 BCF   PORTD, RD3
+Warning[203]: Found opcode in column 1. (GOTO)
+0478   2???           01362 GOTO TOGGLE2
+0479                  01363 SHOWON:  
+Warning[203]: Found opcode in column 1. (BSF)
+0479   1408           01364 BSF   PORTD, RD0
+Warning[203]: Found opcode in column 1. (BSF)
+047A   1588           01365 BSF   PORTD, RD3
+Warning[203]: Found opcode in column 1. (GOTO)
+047B   2???           01366 GOTO TOGGLE2
+Warning[207]: Found label after column 1. (TOGGLE2)
+047C                  01367  TOGGLE2
+047C   1C00           01368     BTFSS  CONT2, 0
+047D   2???           01369     GOTO    TOG_00
+047E                  01370 TOG_11:
+047E   1400           01371     BSF     CONT2, 0
+047F   0008           01372     RETURN
+0480                  01373 TOG_00:
+0480   1000           01374     BCF     CONT2, 0
+Warning[203]: Found opcode in column 1. (RETURN)
+0481   0008           01375 RETURN
+0482                  01376 TIMER1_2S
+Warning[203]: Found opcode in column 1. (MOVF)
+0482   08??           01377 MOVF CONTADOR2,0
+Warning[203]: Found opcode in column 1. (SUBLW)
+0483   3C0A           01378 SUBLW .10
+Warning[203]: Found opcode in column 1. (BTFSC)
+0484   1903           01379 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+0485   2???           01380 GOTO VAP2
+Warning[203]: Found opcode in column 1. (RETURN)
+0486   0008           01381 RETURN 
+Warning[207]: Found label after column 1. (VAP2)
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 34
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0487                  01382  VAP2
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+0487   0A??           01383 INCF CONT2
+Warning[203]: Found opcode in column 1. (CLRF)
+0488   01??           01384 CLRF CONTADOR2
+Warning[203]: Found opcode in column 1. (RETURN)
+0489   0008           01385 RETURN 
+                      01386 ;*****************************************************************************
+                      01387  ;/////////////////////////////////////////////////////////////////////////////
+                      01388  ;*************************************************************************** 
+048A                  01389 CONFIG_FLAG
+                      01390  ;TIMER0
+048A   178B           01391  BSF  INTCON, GIE
+048B   168B           01392  BSF  INTCON, T0IE
+048C   110B           01393  BCF  INTCON, T0IF 
+048D   1683 1303      01394  BANKSEL TRISA 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+048F   140C           01395  BSF     PIE1, TMR1IE
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0490   148C           01396  BSF     PIE1, TMR2IE 
+0491   1283 1303      01397  BANKSEL PORTA
+0493   178B           01398  BSF     INTCON, GIE
+0494   170B           01399  BSF     INTCON, PEIE
+0495   100C           01400  BCF     PIR1, TMR1IF
+0496   108C           01401  BCF     PIR1, TMR2IF 
+0497   0008           01402  RETURN 
+Warning[207]: Found label after column 1. (CONFIG_TIMER0)
+0498                  01403   CONFIG_TIMER0
+0498   1683 1303      01404  BANKSEL TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+049A   1281           01405  BCF OPTION_REG , T0CS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+049B   1181           01406  BCF OPTION_REG , PSA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+049C   1101           01407  BCF OPTION_REG , PS2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+049D   1481           01408  BSF OPTION_REG , PS1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+049E   1001           01409  BCF OPTION_REG , PS0
+049F   1283 1303      01410  BANKSEL PORTA
+04A1   3006           01411  MOVLW   .6
+04A2   0081           01412  MOVWF   TMR0
+04A3   110B           01413  BCF INTCON, T0IF
+04A4   0008           01414  RETURN
+04A5                  01415 CONFIG_TIMER1
+04A5   1283 1303      01416  BANKSEL   PORTA
+04A7   1310           01417  BCF T1CON, TMR1GE
+04A8   1690           01418  BSF T1CON, T1CKPS1 ;PRESCALER 
+04A9   1610           01419  BSF T1CON, T1CKPS0 ;PRESCALER 
+04AA   1190           01420  BCF T1CON, T1OSCEN ;TIMER INTERNO  
+04AB   1090           01421  BCF T1CON, TMR1CS 
+04AC   1410           01422  BSF T1CON, TMR1ON 
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 35
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+04AD   30CF           01423  MOVLW .207  ;PRESCALER HIGH 
+04AE   008F           01424  MOVWF TMR1H
+04AF   3026           01425  MOVLW .38  ;PRESCALER LOW
+04B0   008E           01426  MOVWF TMR1L
+04B1   100C           01427  BCF PIR1, TMR1IF
+Warning[203]: Found opcode in column 1. (RETURN)
+04B2   0008           01428 RETURN 
+04B3                  01429 CONFIG_TIMER2
+04B3   1283 1303      01430  BANKSEL PORTA
+04B5   3067           01431  MOVLW   B'01100111'
+04B6   0092           01432  MOVWF   T2CON
+04B7   1683 1303      01433  BANKSEL TRISA
+04B9   30F1           01434  MOVLW   .241
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+04BA   0092           01435  MOVWF   PR2
+04BB   1283 1303      01436  BANKSEL PORTA
+04BD   0191           01437  CLRF    TMR2
+04BE   108C           01438  BCF     PIR1, TMR2IF
+Warning[203]: Found opcode in column 1. (RETURN)
+04BF   0008           01439 RETURN 
+                      01440  ;****************************DISPLAY 7 SEGMENTOS ******************************
+                      01441  ;******************************************************************************
+                      01442  ;******************************************************************************
+                      01443  ;******************************************************************************
+04C0                  01444 DISPLAY_GE
+Warning[203]: Found opcode in column 1. (BTFSS)
+04C0   1E08           01445 BTFSS PORTD,RD4
+Warning[203]: Found opcode in column 1. (GOTO)
+04C1   2???           01446 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+04C2   1208           01447 BCF PORTD, RD4
+Warning[203]: Found opcode in column 1. (BSF)
+04C3   1688           01448 BSF PORTD, RD5
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04C4   08??           01449 MOVFW NIBBLEH
+Warning[203]: Found opcode in column 1. (CALL)
+04C5   2???           01450 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04C6   0087           01451 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04C7   0008           01452 RETURN
+Warning[203]: Found opcode in column 1. (BTFSS)
+04C8   1E88           01453 BTFSS PORTD, RD5
+Warning[203]: Found opcode in column 1. (GOTO)
+04C9   2???           01454 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+04CA   1288           01455 BCF PORTD, RD5
+Warning[203]: Found opcode in column 1. (BSF)
+04CB   1708           01456 BSF PORTD, RD6
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04CC   08??           01457 MOVFW NIBBLE_HL 
+Warning[203]: Found opcode in column 1. (CALL)
+04CD   2???           01458 CALL SEV_SEG
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 36
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (MOVWF)
+04CE   0087           01459 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04CF   0008           01460 RETURN
+Warning[203]: Found opcode in column 1. (BTFSS)
+04D0   1F08           01461 BTFSS PORTD, RD6
+Warning[203]: Found opcode in column 1. (GOTO)
+04D1   2???           01462 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+04D2   1308           01463 BCF PORTD, RD6
+Warning[203]: Found opcode in column 1. (BSF)
+04D3   1788           01464 BSF PORTD, RD7
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04D4   08??           01465 MOVFW NIBBLE_HH
+Warning[203]: Found opcode in column 1. (CALL)
+04D5   2???           01466 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04D6   0087           01467 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04D7   0008           01468 RETURN
+Warning[203]: Found opcode in column 1. (BCF)
+04D8   1388           01469 BCF PORTD, RD7
+Warning[203]: Found opcode in column 1. (BSF)
+04D9   1608           01470 BSF PORTD, RD4
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04DA   08??           01471 MOVFW NIBBLEL
+Warning[203]: Found opcode in column 1. (CALL)
+04DB   2???           01472 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04DC   0087           01473 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04DD   0008           01474 RETURN
+                      01475  ;******************************************************************************
+                      01476  ;******************************************************************************
+                      01477  ;******************************************************************************
+                      01478  ;******************************************************************************
+04DE                  01479 DISPLAY_GEMES
+Warning[203]: Found opcode in column 1. (BTFSS)
+04DE   1E08           01480 BTFSS PORTD,RD4
+Warning[203]: Found opcode in column 1. (GOTO)
+04DF   2???           01481 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+04E0   1208           01482 BCF PORTD, RD4
+Warning[203]: Found opcode in column 1. (BSF)
+04E1   1688           01483 BSF PORTD, RD5
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04E2   08??           01484 MOVFW NIBBLE_MH 
+Warning[203]: Found opcode in column 1. (CALL)
+04E3   2???           01485 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04E4   0087           01486 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04E5   0008           01487 RETURN
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 37
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (BTFSS)
+04E6   1E88           01488 BTFSS PORTD, RD5
+Warning[203]: Found opcode in column 1. (GOTO)
+04E7   2???           01489 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+04E8   1288           01490 BCF PORTD, RD5
+Warning[203]: Found opcode in column 1. (BSF)
+04E9   1708           01491 BSF PORTD, RD6
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04EA   08??           01492 MOVFW NIBBLE_DL 
+Warning[203]: Found opcode in column 1. (CALL)
+04EB   2???           01493 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04EC   0087           01494 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04ED   0008           01495 RETURN
+Warning[203]: Found opcode in column 1. (BTFSS)
+04EE   1F08           01496 BTFSS PORTD, RD6
+Warning[203]: Found opcode in column 1. (GOTO)
+04EF   2???           01497 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+04F0   1308           01498 BCF PORTD, RD6
+Warning[203]: Found opcode in column 1. (BSF)
+04F1   1788           01499 BSF PORTD, RD7
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04F2   08??           01500 MOVFW  NIBBLE_DH
+Warning[203]: Found opcode in column 1. (CALL)
+04F3   2???           01501 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04F4   0087           01502 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04F5   0008           01503 RETURN
+Warning[203]: Found opcode in column 1. (BCF)
+04F6   1388           01504 BCF PORTD, RD7
+Warning[203]: Found opcode in column 1. (BSF)
+04F7   1608           01505 BSF PORTD, RD4
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+04F8   08??           01506 MOVFW NIBBLE_ML
+Warning[203]: Found opcode in column 1. (CALL)
+04F9   2???           01507 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+04FA   0087           01508 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+04FB   0008           01509 RETURN
+                      01510  ;******************************************************************************
+                      01511  ;******************************************************************************
+                      01512  ;******************************************************************************
+04FC                  01513 DISPLAY_GEALRMA
+Warning[203]: Found opcode in column 1. (BTFSS)
+04FC   1E08           01514 BTFSS PORTD,RD4
+Warning[203]: Found opcode in column 1. (GOTO)
+04FD   2???           01515 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 38
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+04FE   1208           01516 BCF PORTD, RD4
+Warning[203]: Found opcode in column 1. (BSF)
+04FF   1688           01517 BSF PORTD, RD5
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0500   08??           01518 MOVFW ALARMA_SD
+Warning[203]: Found opcode in column 1. (CALL)
+0501   2???           01519 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+0502   0087           01520 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+0503   0008           01521 RETURN
+Warning[203]: Found opcode in column 1. (BTFSS)
+0504   1E88           01522 BTFSS PORTD, RD5
+Warning[203]: Found opcode in column 1. (GOTO)
+0505   2???           01523 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+0506   1288           01524 BCF PORTD, RD5
+Warning[203]: Found opcode in column 1. (BSF)
+0507   1708           01525 BSF PORTD, RD6
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0508   08??           01526 MOVFW ALARMA_MU 
+Warning[203]: Found opcode in column 1. (CALL)
+0509   2???           01527 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+050A   0087           01528 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+050B   0008           01529 RETURN
+Warning[203]: Found opcode in column 1. (BTFSS)
+050C   1F08           01530 BTFSS PORTD, RD6
+Warning[203]: Found opcode in column 1. (GOTO)
+050D   2???           01531 GOTO $+7
+Warning[203]: Found opcode in column 1. (BCF)
+050E   1308           01532 BCF PORTD, RD6
+Warning[203]: Found opcode in column 1. (BSF)
+050F   1788           01533 BSF PORTD, RD7
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0510   08??           01534 MOVFW ALARMA_MD
+Warning[203]: Found opcode in column 1. (CALL)
+0511   2???           01535 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+0512   0087           01536 MOVWF PORTC
+Warning[203]: Found opcode in column 1. (RETURN)
+0513   0008           01537 RETURN
+Warning[203]: Found opcode in column 1. (BCF)
+0514   1388           01538 BCF PORTD, RD7
+Warning[203]: Found opcode in column 1. (BSF)
+0515   1608           01539 BSF PORTD, RD4
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0516   08??           01540 MOVFW ALARMA_SU
+Warning[203]: Found opcode in column 1. (CALL)
+0517   2???           01541 CALL SEV_SEG
+Warning[203]: Found opcode in column 1. (MOVWF)
+0518   0087           01542 MOVWF PORTC
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 39
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (RETURN)
+0519   0008           01543 RETURN
+                      01544  ;******************************************************************************
+                      01545  ;******************************************************************************
+                      01546  ;******************************************************************************
+051A                  01547 CONFIG_IO
+051A   1683 1303      01548     BANKSEL TRISA
+051C   300F           01549     MOVLW   B'0001111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+051D   0085           01550     MOVWF   TRISA
+051E   1283 1303      01551     BANKSEL PORTA
+0520   0185           01552     CLRF    PORTA
+0521   1683 1703      01553     BANKSEL ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0523   0188           01554     CLRF    ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0524   0189           01555     CLRF    ANSELH 
+0525   1683 1303      01556     BANKSEL TRISB
+0527   3040           01557     MOVLW   B'01000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0528   0086           01558     MOVWF   TRISB
+0529   1283 1303      01559     BANKSEL PORTB
+052B   0186           01560     CLRF    PORTB
+052C   1683 1303      01561     BANKSEL TRISC
+052E   3000           01562     MOVLW   B'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+052F   0087           01563     MOVWF   TRISC
+0530   1283 1303      01564     BANKSEL PORTC
+0532   0187           01565     CLRF    PORTC
+0533   1683 1303      01566     BANKSEL TRISD
+0535   3000           01567     MOVLW   B'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0536   0088           01568     MOVWF   TRISD
+0537   1283 1303      01569     BANKSEL PORTD
+0539   0188           01570     CLRF    PORTD
+053A   0008           01571      RETURN
+Warning[205]: Found directive in column 1. (END)
+20D4 3FFF             01572 END
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 40
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABDEN                             00000000
+ABDOVF                            00000007
+ABR                               0000031C
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+AGO                               000003B4
+ALARMACERO                        000001CB
+ALARMADADA                        000001E8
+ALARMADUDU                        000001DF
+ALARMA_MD                         00000007
+ALARMA_MU                         00000006
+ALARMA_SD                         00000005
+ALARMA_SU                         00000004
+ANS0                              00000000
+ANS1                              00000001
+ANS10                             00000002
+ANS11                             00000003
+ANS12                             00000004
+ANS13                             00000005
+ANS2                              00000002
+ANS3                              00000003
+ANS4                              00000004
+ANS5                              00000005
+ANS6                              00000006
+ANS7                              00000007
+ANS8                              00000000
+ANS9                              00000001
+ANSEL                             00000188
+ANSELH                            00000189
+BAUDCTL                           00000187
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRG0                              00000000
+BRG1                              00000001
+BRG10                             00000002
+BRG11                             00000003
+BRG12                             00000004
+BRG13                             00000005
+BRG14                             00000006
+BRG15                             00000007
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 41
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BRG16                             00000003
+BRG2                              00000002
+BRG3                              00000003
+BRG4                              00000004
+BRG5                              00000005
+BRG6                              00000006
+BRG7                              00000007
+BRG8                              00000000
+BRG9                              00000001
+BRGH                              00000002
+C                                 00000000
+C1CH0                             00000000
+C1CH1                             00000001
+C1IE                              00000005
+C1IF                              00000005
+C1OE                              00000005
+C1ON                              00000007
+C1OUT                             00000006
+C1POL                             00000004
+C1R                               00000002
+C1RSEL                            00000005
+C1SEN                             00000005
+C2CH0                             00000000
+C2CH1                             00000001
+C2IE                              00000006
+C2IF                              00000006
+C2OE                              00000005
+C2ON                              00000007
+C2OUT                             00000006
+C2POL                             00000004
+C2R                               00000002
+C2REN                             00000004
+C2RSEL                            00000004
+C2SYNC                            00000000
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 42
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHANGEALARMA                      00000276
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CKE                               00000006
+CKP                               00000004
+CM1CON0                           00000107
+CM2CON0                           00000108
+CM2CON1                           00000109
+CONFIG_FLAG                       0000048A
+CONFIG_IO                         0000051A
+CONFIG_TIMER0                     00000498
+CONFIG_TIMER1                     000004A5
+CONFIG_TIMER2                     000004B3
+CONT2                             0000000E
+CONTADOR1                         0000000F
+CONTADOR2                         00000010
+CONTALARMA                        00000003
+CONTDIA                           0000000D
+CONTF                             00000000
+CONTHORAS                         00000021
+CONTHORAS_H                       00000022
+CONTMES_H                         00000026
+CONTMES_L                         00000025
+CONTSEG                           00000001
+CONTSEGALARMA                     00000002
+CONT_NEW                          00000019
+CONT_OLD                          0000001A
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DIASEXTRA                         000002C6
+DIASEXTRAABRI                     00000338
+DIASEXTRAAGO                      000003D0
+DIASEXTRADIC                      00000468
+DIASEXTRAFEB                      000002EC
+DIASEXTRAJUL                      000003AA
+DIASEXTRAJUN                      00000384
+DIASEXTRAMAR                      00000312
+DIASEXTRAMAY                      0000035E
+DIASEXTRANOV                      00000442
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 43
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DIASEXTRAOCT                      0000041C
+DIASEXTRASEP                      000003F6
+DIC                               0000044C
+DISPLAY_GE                        000004C0
+DISPLAY_GEALRMA                   000004FC
+DISPLAY_GEMES                     000004DE
+D_A                               00000005
+D_NOT_A                           00000005
+ECCPAS                            0000009C
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDAT                             0000010C
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+ENE                               000002AA
+ESPE                              00000009
+ESPE2                             0000000A
+ESPE3                             0000000B
+ESPE4                             0000000C
+ESTADO                            0000001B
+ESTADOS                           000000A0
+F                                 00000001
+FEB                               000002D0
+FERR                              00000002
+FLAGCOUNTDOWN                     00000020
+FLAGSALARMA                       0000001F
+FLAGSHORAS                        0000001D
+FLAGSMES                          0000001C
+FLAGSMODH                         0000001E
+FSR                               00000004
+FUE_TIMR0                         00000015
+FUE_TIMR1                         00000021
+FUE_TIMR2                         00000029
+FVREN                             00000000
+GCEN                              00000007
+GIE                               00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HERE                              000002B6
+HEREABRI                          00000328
+HEREAGO                           000003C0
+HEREDIC                           00000458
+HEREFEB                           000002DC
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 44
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+HEREJUL                           0000039A
+HEREJUN                           00000374
+HEREMAR                           00000302
+HEREMAY                           0000034E
+HERENOV                           00000432
+HEREOCT                           0000040C
+HERESEP                           000003E6
+HORARESET                         0000029D
+HORARESET2                        00000299
+HORAS                             00000046
+HORAS_L                           00000061
+HTS                               00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+INCREMENTUNOS                     00000283
+INCREMENTUNOS_MES                 000002AA
+INCREMENTUNOS_MESABRI             0000031C
+INCREMENTUNOS_MESAGO              000003B4
+INCREMENTUNOS_MESDIC              0000044C
+INCREMENTUNOS_MESFEB              000002D0
+INCREMENTUNOS_MESJUL              0000038E
+INCREMENTUNOS_MESJUN              00000368
+INCREMENTUNOS_MESMAR              000002F6
+INCREMENTUNOS_MESMAY              00000342
+INCREMENTUNOS_MESNOV              00000426
+INCREMENTUNOS_MESOCT              00000400
+INCREMENTUNOS_MESSEP              000003DA
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IOCB6                             00000006
+IOCB7                             00000007
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRP                               00000007
+ISR                               00000008
+JUL                               0000038E
+JUN                               00000368
+LOOPHORA                          00000135
+LOOPMES                           00000141
+LOOP_ALARMA                       0000017B
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 45
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LOOP_MODALARMA                    0000016B
+LOOP_MOD_HORA                     0000014C
+LOOP_MOD_MES                      0000015C
+LTS                               00000001
+MAR                               000002F6
+MAY                               00000342
+MC1OUT                            00000007
+MC2OUT                            00000006
+MEN                               00000228
+MEN2                              00000247
+MEN2_                             0000024F
+MENA                              00000266
+MENA_                             0000026E
+MEN_                              00000230
+MES                               000000A9
+MESCERO                           000002CB
+MESCEROABRI                       0000033D
+MESCEROAGO                        000003D5
+MESCERODIC                        0000046D
+MESCEROFEB                        000002F1
+MESCEROJUL                        000003AF
+MESCEROJUN                        00000389
+MESCEROMAR                        00000317
+MESCEROMAY                        00000363
+MESCERONOV                        00000447
+MESCEROOCT                        00000421
+MESCEROSEP                        000003FB
+MESRESET                          000002A2
+MESRESET_H                        000002A6
+MES_H                             000000C4
+MES_L                             000000B7
+MSK                               00000093
+MSK0                              00000000
+MSK1                              00000001
+MSK2                              00000002
+MSK3                              00000003
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
+NIBBLEH                           00000011
+NIBBLEL                           00000012
+NIBBLE_DH                         00000016
+NIBBLE_DL                         00000015
+NIBBLE_HH                         00000014
+NIBBLE_HL                         00000013
+NIBBLE_MH                         00000018
+NIBBLE_ML                         00000017
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 46
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+NOV                               00000426
+OCT                               00000400
+OERR                              00000001
+OPTION_REG                        00000081
+OSCCON                            0000008F
+OSCTUNE                           00000090
+OSFIE                             00000007
+OSFIF                             00000007
+OSTS                              00000003
+P                                 00000004
+P1M0                              00000006
+P1M1                              00000007
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PISHLEDS                          00000472
+POP                               0000000F
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PRE_CARGA1                        000001BC
+PRE_CARGA2                        000001C0
+PRE_CARGA3                        000001C4
+PRE_CARGA4                        000001C8
+PRE_CARGA_RESET                   000001B7
+PRSEN                             00000007
+PS0                               00000000
+PS1                               00000001
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 47
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PS2                               00000002
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTRCON                           0000009D
+PULSR                             00000002
+PULSS                             00000003
+PUSH                              00000004
+PWM1CON                           0000009B
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 48
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+RESETLOOP                         0000018D
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SBOREN                            00000004
+SCKP                              00000004
+SCS                               00000000
+SEN                               00000000
+SENDB                             00000003
+SEP                               000003DA
+SEV_SEG                           00000035
+SHOWOFF                           00000476
+SHOWON                            00000479
+SMP                               00000007
+SPBRG                             00000099
+SPBRGH                            0000009A
+SPEN                              00000007
+SR0                               00000006
+SR1                               00000007
+SRCON                             00000185
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPMSK                            00000093
+SSPOV                             00000006
+SSPSTAT                           00000094
+START                             00000100
+STATUS                            00000003
+STATUS_TEMP                       0000002C
+STRA                              00000000
+STRB                              00000001
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 49
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+STRC                              00000002
+STRD                              00000003
+STRSYNC                           00000004
+SUMA                              00000218
+SUMA2                             00000238
+SUMA2_                            00000240
+SUMAA                             00000257
+SUMAA_                            0000025F
+SUMA_                             00000220
+SUMA_ESTADO                       00000210
+SWDTEN                            00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1GINV                            00000007
+T1GIV                             00000007
+T1GSS                             00000001
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TEMP1                             00000029
+TEMP2                             0000002A
+TEMPALARMA                        00000008
+TEMPHORAS                         00000023
+TEMPHORAS_H                       00000024
+TEMPMES_H                         00000028
+TEMPMES_L                         00000027
+TIMER1S                           00000197
+TIMER1_2S                         00000482
+TIMERALRMA                        000001AE
+TIMER_ALARMA_TILL_OFF             000001A6
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 50
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR2ON                            00000002
+TOGGLE2                           0000047C
+TOG_00                            00000480
+TOG_11                            0000047E
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRISE3                            00000003
+TRMT                              00000001
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 51
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TUN3                              00000003
+TUN4                              00000004
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+ULPWUE                            00000005
+ULPWUIE                           00000002
+ULPWUIF                           00000002
+UNDERZERO                         0000027D
+UNDERZERO2                        00000280
+VAP2                              00000487
+VCFG0                             00000004
+VCFG1                             00000005
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000097
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+VRSS                              00000004
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000105
+WDTPS0                            00000001
+WDTPS1                            00000002
+WDTPS2                            00000003
+WDTPS3                            00000004
+WPUB                              00000095
+WPUB0                             00000000
+WPUB1                             00000001
+WPUB2                             00000002
+WPUB3                             00000003
+WPUB4                             00000004
+WPUB5                             00000005
+WPUB6                             00000006
+WPUB7                             00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+W_TEMP                            0000002B
+Z                                 00000002
+_BOR21V                           00003EFF
+_BOR40V                           00003FFF
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 52
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_BOR4V_BOR21V                     00003EFF
+_BOR4V_BOR40V                     00003FFF
+_BOREN_NSLEEP                     00003EFF
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
+_BOREN_SBODEN                     00003DFF
+_BOR_NSLEEP                       00003EFF
+_BOR_OFF                          00003CFF
+_BOR_ON                           00003FFF
+_BOR_SBODEN                       00003DFF
+_CONFIG1                          00002007
+_CONFIG2                          00002008
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003F7F
+_CP_OFF                           00003FFF
+_CP_ON                            00003FBF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         00001FFF
+_DEVID1                           00002006
+_EC_OSC                           00003FFB
+_EXTRC                            00003FFF
+_EXTRCIO                          00003FFE
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_FCMEN_OFF                        000037FF
+_FCMEN_ON                         00003FFF
+_FOSC_EC                          00003FFB
+_FOSC_EXTRC_CLKOUT                00003FFF
+_FOSC_EXTRC_NOCLKOUT              00003FFE
+_FOSC_HS                          00003FFA
+_FOSC_INTRC_CLKOUT                00003FFD
+_FOSC_INTRC_NOCLKOUT              00003FFC
+_FOSC_LP                          00003FF8
+_FOSC_XT                          00003FF9
+_HS_OSC                           00003FFA
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_IESO_OFF                         00003BFF
+_IESO_ON                          00003FFF
+_INTOSC                           00003FFD
+_INTOSCIO                         00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_LVP_OFF                          00002FFF
+_LVP_ON                           00003FFF
+_MAIN_PROG_019A                   0000019A
+_MAIN_PROG_01A1                   000001A1
+_MAIN_PROG_01AA                   000001AA
+_MAIN_PROG_01B2                   000001B2
+_MAIN_PROG_01CE                   000001CE
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 53
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_MAIN_PROG_01D3                   000001D3
+_MAIN_PROG_01D8                   000001D8
+_MAIN_PROG_01ED                   000001ED
+_MAIN_PROG_01F6                   000001F6
+_MAIN_PROG_0200                   00000200
+_MAIN_PROG_0209                   00000209
+_MAIN_PROG_0215                   00000215
+_MAIN_PROG_021D                   0000021D
+_MAIN_PROG_0225                   00000225
+_MAIN_PROG_022D                   0000022D
+_MAIN_PROG_0235                   00000235
+_MAIN_PROG_023D                   0000023D
+_MAIN_PROG_0245                   00000245
+_MAIN_PROG_024C                   0000024C
+_MAIN_PROG_0254                   00000254
+_MAIN_PROG_025C                   0000025C
+_MAIN_PROG_0264                   00000264
+_MAIN_PROG_026B                   0000026B
+_MAIN_PROG_0273                   00000273
+_MAIN_PROG_027B                   0000027B
+_MAIN_PROG_02BD                   000002BD
+_MAIN_PROG_02E3                   000002E3
+_MAIN_PROG_0309                   00000309
+_MAIN_PROG_032F                   0000032F
+_MAIN_PROG_0355                   00000355
+_MAIN_PROG_037B                   0000037B
+_MAIN_PROG_03A1                   000003A1
+_MAIN_PROG_03C7                   000003C7
+_MAIN_PROG_03ED                   000003ED
+_MAIN_PROG_0413                   00000413
+_MAIN_PROG_0439                   00000439
+_MAIN_PROG_045F                   0000045F
+_MAIN_PROG_04C1                   000004C1
+_MAIN_PROG_04C9                   000004C9
+_MAIN_PROG_04D1                   000004D1
+_MAIN_PROG_04DF                   000004DF
+_MAIN_PROG_04E7                   000004E7
+_MAIN_PROG_04EF                   000004EF
+_MAIN_PROG_04FD                   000004FD
+_MAIN_PROG_0505                   00000505
+_MAIN_PROG_050D                   0000050D
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDTE_OFF                         00003FF7
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+MPASM 5.77                          TRY1.ASM   9-21-2020  21:37:47         PAGE 54
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_XT_OSC                           00003FF9
+__16F887                          00000001
+lj                                00000030
+
+Errors   :     0
+Warnings :   376 reported,     0 suppressed
+Messages :    91 reported,     0 suppressed
+
+
