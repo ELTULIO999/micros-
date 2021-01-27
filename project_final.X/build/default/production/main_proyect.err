@@ -1,0 +1,23 @@
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 23 : Found label after column 1. (GPR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 24 : Found label after column 1. (ADC_V2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 25 : Found label after column 1. (ADC_V)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 26 : Found label after column 1. (DELAY)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 27 : Found label after column 1. (X)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 29 : Found label after column 1. (RES_VECT)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 59 : Using default destination of 1 (file).
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 59 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 60 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 64 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 65 : Using default destination of 1 (file).
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 87 : Found opcode in column 1. (RETURN)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 106 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 108 : Found label after column 1. (MAPEO)
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 110 : Using default destination of 1 (file).
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 131 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 134 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PROJECT_FINAL.X\MAIN_PROYECT.ASM 145 : Found opcode in column 1. (RETURN)

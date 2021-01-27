@@ -25,14 +25,20 @@
  N1          RES 1
  N2          RES 1
  NUM         RES 1
- NUM2        RES 1  	  
+ NUM2        RES 1
+	  	  
  QUO         RES 1 
  QUO1        RES 1 
  XQUO        RES 1 
  XQUO1       RES 1 
  YQUO        RES 1 
  YQUO1       RES 1 
-        
+       
+ 
+ 
+ 
+ 
+ 
  W_TEMP         RES 1 ;time var 
  STATUS_TEMP    RES 1 ;timer var 
 
@@ -86,35 +92,41 @@ FUE_TIMR2
     BCF PIR1, TMR2IF
     RETURN 
 ;/////////////////////////////////////////////////////////////////////////////	 
+	 
+
+    
 ;-------------------------------------------------------------------
-MAIN_PROG CODE       0X200   
+    
+    MAIN_PROG CODE       0X200   
 START
 CALL    CONFIG_OSC
 BCF	OPTION_REG , 7
 CALL    CONFIG_IO
-;CALL    CONFIG_TIMER0
-;CALL    CONFIG_TIMER1
-;CALL    CONFIG_TIMER2
-;CALL    CONFIG_FLAG
+CALL    CONFIG_TIMER0
+CALL    CONFIG_TIMER1
+CALL    CONFIG_TIMER2
+CALL    CONFIG_FLAG
 CALL    CONFIG_ADC 
 BANKSEL PORTA 
  CLRF    XQUO
  CLRF    XQUO1
  CLRF    YQUO
  CLRF    YQUO1
+ 
  CLRF    NUM
  CLRF    NUM2
  CLRF    QUO1
+ 
 GOTO    LOOP
+ 
  ;------------------------------------------------------------------------------
  ;------------------------------------------------------------------------------
  ;------------------------------------------------------------------------------
 LOOP:
     CALL CONVERT1
     CALL CHANGE1
-    CALL MOT1
-    ;CALL CONVERT2
-    ;CALL CHANGE2
+    CALL CONVERT2
+    CALL CHANGE2
     BSF PORTD,RD2
   
 GOTO LOOP
@@ -125,8 +137,9 @@ GOTO LOOP
     MOVF    N1, W
     CALL    NUM_TO_PWM
     MOVF    QUO, W
-    ADDLW  .32
+     ADDLW  .32
     MOVWF   CCPR1L
+    
  RETURN 
  CHANGE2
     MOVF    N2, W
@@ -134,6 +147,7 @@ GOTO LOOP
     MOVF    QUO, W
     ADDLW   .32
     MOVWF   CCPR2L
+    
  RETURN 
  
  NUM_TO_PWM:
@@ -153,7 +167,7 @@ CONVERT1:
     GOTO $-1
     MOVF ADRESH, W
     MOVWF N1
-    ;BSF ADCON0, CHS0
+    BSF ADCON0, CHS0
     CALL DELAY
     RETURN 
     
@@ -270,7 +284,7 @@ RETURN
  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 CONFIG_IO
     BANKSEL TRISA
-    MOVLW   B'00000001'
+    MOVLW   B'00000011'
     MOVWF   TRISA
     BANKSEL PORTA
     CLRF    PORTA
@@ -278,6 +292,7 @@ CONFIG_IO
     CLRF    ANSEL
     CLRF    ANSELH 
     BSF ANSEL, ANS0
+    BSF ANSEL, ANS1
     BANKSEL TRISB
     MOVLW   B'00000000'
     MOVWF   TRISB

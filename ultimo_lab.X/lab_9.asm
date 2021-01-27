@@ -20,24 +20,15 @@
  __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
  ;-----------------------------------------------------------------------------
  ;-----------------------------------------------------------------------------
- GPR_VAR  UDATA 
+ DATA_EE_ADDR EQU 0X00
  
- N1          RES 1
- N2          RES 1
- NUM         RES 1
- NUM2        RES 1  	  
- QUO         RES 1 
- QUO1        RES 1 
- XQUO        RES 1 
- XQUO1       RES 1 
- YQUO        RES 1 
- YQUO1       RES 1 
-        
- W_TEMP         RES 1 ;time var 
- STATUS_TEMP    RES 1 ;timer var 
-
-     
-
+ GPR_VAR  UDATA 
+ CONT         RES 1 ;IN USE 	 
+;//////////////////////////////////////////////////////////////////////////////
+	 ;VAR DE TIMER 
+;//////////////////////////////////////////////////////////////////////////////
+ W_TEMP       RES 1
+ STATUS_TEMP  RES 1
 	 
 ;******************************************************************************
 ;******************************************************************************
@@ -45,157 +36,132 @@
  GOTO    START                   ; go to beginning of program
 ;**************TODO ADD INTERRUPTS HERE IF USED********************************
 ISR_VEC CODE 0X004
- PUSH:
-    BCF   INTCON, GIE
-    MOVWF W_TEMP
-    SWAPF STATUS, W
-    MOVWF STATUS_TEMP
- ISR:
-    BTFSC PIR1, TMR2IF
-    CALL FUE_TIMR2
-    BTFSC PIR1, TMR1IF
-    CALL FUE_TIMR1  
-    BTFSS INTCON, T0IF 
-    GOTO POP    
-    CALL FUE_TIMR0
- POP:
-    SWAPF STATUS_TEMP, W
-    MOVWF STATUS 
-    SWAPF W_TEMP, F
-    SWAPF W_TEMP, W
-    BSF   INTCON, GIE 
-RETFIE
-;//////////////////////////////SUBRUTINAS DE TIMERS/////////////////////////////
-FUE_TIMR0
-    BTFSS INTCON, T0IF 
-    GOTO POP
-    MOVLW .6
-    MOVWF TMR0
-    BCF INTCON, T0IF
-    RETURN 
-    
-FUE_TIMR1
-    MOVLW .207  ;PRESCALER HIGH 
-    MOVWF TMR1H
-    MOVLW .38  ;PRESCALER LOW
-    MOVWF TMR1L
-    BCF  PIR1, TMR1IF
-    RETURN 
-FUE_TIMR2
-    CLRF TMR2
-    BCF PIR1, TMR2IF
-    RETURN 
-;/////////////////////////////////////////////////////////////////////////////	 
-;-------------------------------------------------------------------
-MAIN_PROG CODE       0X200   
+
+	 
+	 
+    MAIN_PROG CODE       0X100   
 START
-CALL    CONFIG_OSC
-BCF	OPTION_REG , 7
+BCF OPTION_REG , 7
 CALL    CONFIG_IO
-;CALL    CONFIG_TIMER0
-;CALL    CONFIG_TIMER1
-;CALL    CONFIG_TIMER2
-;CALL    CONFIG_FLAG
-CALL    CONFIG_ADC 
+CALL    CONFIG_FLAG
+CALL    CONFUG_OSC
+CALL    CONFUG_ADC
 BANKSEL PORTA 
- CLRF    XQUO
- CLRF    XQUO1
- CLRF    YQUO
- CLRF    YQUO1
- CLRF    NUM
- CLRF    NUM2
- CLRF    QUO1
-GOTO    LOOP
- ;------------------------------------------------------------------------------
- ;------------------------------------------------------------------------------
- ;------------------------------------------------------------------------------
-LOOP:
-    CALL CONVERT1
-    CALL CHANGE1
-    CALL MOT1
-    ;CALL CONVERT2
-    ;CALL CHANGE2
-    BSF PORTD,RD2
-  
-GOTO LOOP
- ;------------------------------------------------------------------------------
- ;------------------------------------------------------------------------------
- ;------------------------------------------------------------------------------
- CHANGE1
-    MOVF    N1, W
-    CALL    NUM_TO_PWM
-    MOVF    QUO, W
-    ADDLW  .32
-    MOVWF   CCPR1L
- RETURN 
- CHANGE2
-    MOVF    N2, W
-    CALL    NUM_TO_PWM
-    MOVF    QUO, W
-    ADDLW   .32
-    MOVWF   CCPR2L
- RETURN 
+CLRF    CONT
+CLRF    W_TEMP       
+CLRF    STATUS_TEMP   
  
- NUM_TO_PWM:
-    MOVWF   NUM
-    CLRF    QUO
-    MOVLW   .2  
-    INCF    QUO
-    SUBWF   NUM
-    BTFSC   STATUS,C
-    GOTO    $-4
-    DECF    QUO
-    RETURN 
-    
-CONVERT1:
-    BSF ADCON0,GO
-    BTFSC ADCON0,GO
-    GOTO $-1
-    MOVF ADRESH, W
-    MOVWF N1
-    ;BSF ADCON0, CHS0
-    CALL DELAY
-    RETURN 
-    
-CONVERT2:	
-    BSF ADCON0,GO
+CALL    R2_MEM
+ 
+GOTO    LOOP
+LOOP:
+    BSF   ADCON0,GO
     BTFSC ADCON0,GO
     GOTO$-1
     MOVF ADRESH, W
-    MOVWF N2
-    BCF ADCON0, CHS0
-    CALL DELAY
-RETURN   
-
-CONFIG_PWM:
-    MOT1:
-    BANKSEL CCP1CON 
-    BCF CCP1CON, 7
-    BCF CCP1CON, 6
-    BCF CCP1CON, 5
-    BCF CCP1CON, 4
-    BSF CCP1CON, 3
-    BSF CCP1CON, 2
-    BCF CCP1CON, 1
-    BCF CCP1CON, 0
-    MOT2:
-    BANKSEL CCP2CON 
-    BCF CCP2CON, 5
-    BCF CCP2CON, 4
-    BSF CCP2CON, 3
-    BSF CCP2CON, 2
-    BSF CCP2CON, 1
-    BSF CCP2CON, 0    
-    RETURN 
+    MOVWF PORTB
+    MOVWF CONT
+    CALL SAVE_THAT_SHIT
+GOTO LOOP
     
+SAVE_THAT_SHIT
+  BCF    STATUS, RP0
+  BCF    STATUS, RP1
+  BTFSS  PORTA , RA3
+  RETURN 
+  BTFSC  PORTA , RA3
+  GOTO $-1
+  MOVFW CONT 
+  MOVWF PORTD
+  CALL W2_MEM
+RETURN 
+  
+W_MEM:
+   BANKSEL EEADR 
+   MOVLW DATA_EE_ADDR 
+   MOVWF EEADR          ;Data Memory Address to write
+   
+   MOVLW CONT ;
+   
+   MOVWF EEDAT          ;Data Memory Value to write
+   BANKSEL EECON1 ;
+   BCF EECON1, EEPGD     ;Point to DATA memory
+   BSF EECON1, WREN      ;Enable writes
+   BCF INTCON, GIE       ;Disable INTs.
+   BTFSC INTCON, GIE     ;SEE AN576
+   GOTO $-2
+   MOVLW 0x55 ;
+   MOVWF EECON2 ;Write 55h
+   MOVLW 0XAA  ;
+   MOVWF EECON2 ;Write AAh
+   BSF EECON1, WR ;Set WR bit to begin write
+   BSF INTCON, GIE ;Enable INTs.
+   SLEEP ;Wait for interrupt to signal write complete
+   BCF EECON1, WREN ;Disable writes
+   BCF STATUS, RP0 ;Bank 0
+   BCF STATUS, RP1
+RETURN
+   
+W2_MEM:
+    BANKSEL EEADR
+    MOVLW .0
+    MOVWF EEADR
+    BANKSEL PORTA
+    MOVFW CONT
+    BANKSEL EEDAT
+    MOVWF   EEDAT
+    BANKSEL EECON1
+    BCF EECON1,EEPGD
+    BSF EECON1,WREN
+    BCF INTCON, GIE
+    MOVLW 0x55 
+    MOVWF EECON2 ;Write 55h
+    MOVLW 0XAA  
+    MOVWF EECON2 
+    BSF EECON1, WR
+    BSF INTCON, GIE 
+    
+    BCF EECON1, WREN 
+    BANKSEL PORTA   
+RETURN 
+  
+R_MEM:
+    BANKSEL EEADR ;
+    MOVLW   DATA_EE_ADDR ;
+    MOVWF   EEADR        ;Data Memory
+                         ;Address to read
+    BANKSEL EECON1 ;
+    BCF     EECON1, EEPGD ;Point to DATA memory
+    BSF     EECON1, RD    ;EE Read
+    BANKSEL EEDAT ;
+    MOVF    EEDAT, W ;W = EEDAT
+    MOVWF PORTD	
+    BCF     STATUS, RP1 ;Bank 0	   
+RETURN 
+  
+ R2_MEM:
+    BCF INTCON, GIE 
+    MOVLW .0
+    BANKSEL EEADR
+    MOVWF   EEADR
+    BANKSEL EECON1
+    BCF     EECON1, EEPGD
+    BSF     EECON1, RD
+    BANKSEL EEDATA
+    MOVFW   EEDATA
+    BANKSEL PORTA
+    MOVWF   PORTD
+    BSF     INTCON, GIE 
+RETURN 
+  
  
- CONFIG_OSC:
+ 
+CONFUG_OSC:
     BANKSEL OSCCON
     MOVLW B'01100001'
     MOVWF OSCCON
     RETURN
-    
-CONFIG_ADC:
+CONFUG_ADC:
     BANKSEL PORTA
     BCF ADCON0, ADCS1
     BSF ADCON0, ADCS0		; FOSC/8 RELOJ TAD
@@ -209,9 +175,13 @@ CONFIG_ADC:
     BCF ADCON1, VCFG0		; VDD COMO REFERENCIA VREF+
     BANKSEL PORTA
     BSF ADCON0, ADON		; ENCIENDO EL MÓDULO ADC
-RETURN
+    RETURN
 
- CONFIG_FLAG:
+    
+ ;------------------------------------------------------------------------------
+ ;------------------------------------------------------------------------------
+ ;------------------------------------------------------------------------------
+ CONFIG_FLAG
  BSF  INTCON, GIE
  BSF  INTCON, T0IE
  BCF  INTCON, T0IF 
@@ -224,8 +194,7 @@ RETURN
  BCF     PIR1, TMR1IF
  BCF     PIR1, TMR2IF 
  RETURN 
- 
- CONFIG_TIMER0:
+  CONFIG_TIMER0
  BANKSEL TRISA
  BCF OPTION_REG , T0CS
  BCF OPTION_REG , PSA
@@ -237,8 +206,7 @@ RETURN
  MOVWF   TMR0
  BCF INTCON, T0IF
  RETURN
- 
-CONFIG_TIMER1:
+CONFIG_TIMER1
  BANKSEL   PORTA
  BCF T1CON, TMR1GE
  BSF T1CON, T1CKPS1 ;PRESCALER 
@@ -252,14 +220,12 @@ CONFIG_TIMER1:
  MOVWF TMR1L
  BCF PIR1, TMR1IF
 RETURN 
- 
-CONFIG_TIMER2:
+CONFIG_TIMER2
  BANKSEL PORTA
- MOVLW  B'01111111' ;B'00000101'
+ MOVLW   B'00100101'
  MOVWF   T2CON
- 
  BANKSEL TRISA
- MOVLW   .187
+ MOVLW   .1
  MOVWF   PR2
  BANKSEL PORTA
  CLRF    TMR2
@@ -268,9 +234,9 @@ RETURN
  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-CONFIG_IO
+ CONFIG_IO
     BANKSEL TRISA
-    MOVLW   B'00000001'
+    MOVLW   B'00001001'
     MOVWF   TRISA
     BANKSEL PORTA
     CLRF    PORTA
@@ -293,17 +259,18 @@ CONFIG_IO
     MOVWF   TRISD
     BANKSEL PORTD
     CLRF    PORTD
-     RETURN     
-DELAY
-NOP
-NOP
-NOP
-NOP
-NOP
-NOP
-NOP
-NOP
-NOP
-NOP
-RETURN
+     RETURN
+     
+     ;DELAY
+     NOP
+     NOP
+     NOP
+     NOP
+     NOP
+     NOP
+     NOP
+     NOP
+     NOP
+     NOP
+    RETURN 
 END

@@ -1,0 +1,78 @@
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 23 : Found label after column 1. (GPR_VAR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 25 : Found label after column 1. (N1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 26 : Found label after column 1. (N2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 27 : Found label after column 1. (NUM)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 28 : Found label after column 1. (NUM2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 30 : Found label after column 1. (QUO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 31 : Found label after column 1. (QUO1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 32 : Found label after column 1. (XQUO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 33 : Found label after column 1. (XQUO1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 34 : Found label after column 1. (YQUO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 35 : Found label after column 1. (YQUO1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 42 : Found label after column 1. (W_TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 43 : Found label after column 1. (STATUS_TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 50 : Found label after column 1. (RES_VECT)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 54 : Found label after column 1. (PUSH)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 59 : Found label after column 1. (ISR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 67 : Found label after column 1. (POP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 73 : Found opcode in column 1. (RETFIE)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 100 : Found label after column 1. (MAIN_PROG)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 102 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 103 : Found opcode in column 1. (BCF)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 103 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 104 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 105 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 106 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 107 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 108 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 109 : Found opcode in column 1. (CALL)
+Warning[205] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 110 : Found directive in column 1. (BANKSEL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 121 : Found opcode in column 1. (GOTO)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 133 : Found opcode in column 1. (GOTO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 137 : Found label after column 1. (CHANGE1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 145 : Found label after column 1. (CHANGE2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 154 : Found label after column 1. (NUM_TO_PWM)
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 158 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 159 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 162 : Using default destination of 1 (file).
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 183 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 186 : Found label after column 1. (MOT1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 196 : Found label after column 1. (MOT2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 207 : Found label after column 1. (CONFIG_OSC)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 210 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 222 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 223 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 224 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 227 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 229 : Found label after column 1. (CONFIG_FLAG)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 234 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 235 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 243 : Found label after column 1. (CONFIG_TIMER0)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 245 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 246 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 247 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 248 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 249 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 269 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 277 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 281 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 288 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 292 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 293 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 294 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 295 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 298 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 303 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 308 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 313 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 314 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 315 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 316 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 317 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 318 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 319 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 320 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 321 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 322 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 323 : Found opcode in column 1. (RETURN)
+Warning[205] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\LAB8.X\LAB_8.ASM 324 : Found directive in column 1. (END)

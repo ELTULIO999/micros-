@@ -1,0 +1,65 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Wed Nov 04 20:03:18 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                MAIN_PROG       code   0x000003    program   0x0000e0
+.config_2007_BUILD/DEFAULT/PRODUCTION/LAB.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/LAB.O       code   0x002008    program   0x000002
+                      GPR      udata   0x000020       data   0x000003
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000072      
+                            0x002007    0x002008      
+            117 out of 8455 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+               CONFIG_ADC   0x000030    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                CONFIG_IO   0x00000d    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                CONFIG_IO   0x00000d    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+               CONFIG_PWM   0x00005c    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                DELAY10US   0x000057    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                     LOOP   0x000009    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    SERV1   0x000035    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    SERV2   0x000046    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    SETUP   0x000003    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+          _MAIN_PROG_003B   0x00003e    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+          _MAIN_PROG_004C   0x00004f    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+          _MAIN_PROG_0055   0x000058    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    ADC_V   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                   ADC_V2   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    DELAY   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    SETUP   0x000003    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                     LOOP   0x000009    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                CONFIG_IO   0x00000d    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                CONFIG_IO   0x00000d    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+               CONFIG_ADC   0x000030    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    SERV1   0x000035    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+          _MAIN_PROG_003B   0x00003e    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    SERV2   0x000046    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+          _MAIN_PROG_004C   0x00004f    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                DELAY10US   0x000057    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+          _MAIN_PROG_0055   0x000058    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+               CONFIG_PWM   0x00005c    program     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                   ADC_V2   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    ADC_V   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+                    DELAY   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\pwm.X\lab.asm
+
+

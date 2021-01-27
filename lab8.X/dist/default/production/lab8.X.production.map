@@ -1,0 +1,116 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Tue Nov 03 13:40:31 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                  ISR_VEC       code   0x000004    program   0x000040
+                MAIN_PROG       code   0x000200    program   0x000194
+.config_2007_BUILD/DEFAULT/PRODUCTION/LAB_8.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/LAB_8.O       code   0x002008    program   0x000002
+                  GPR_VAR      udata   0x000020       data   0x00000c
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000023      
+                            0x000200    0x0002c9      
+                            0x002007    0x002008      
+            239 out of 8455 program addresses used, program memory utilization is 2%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  CHANGE1   0x000218    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                  CHANGE2   0x00021e    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               CONFIG_ADC   0x000255    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+              CONFIG_FLAG   0x000266    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                CONFIG_IO   0x00029c    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               CONFIG_OSC   0x000250    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               CONFIG_PWM   0x00023d    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+            CONFIG_TIMER0   0x000274    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+            CONFIG_TIMER1   0x000281    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+            CONFIG_TIMER2   0x00028f    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                 CONVERT1   0x00022d    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                 CONVERT2   0x000235    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    DELAY   0x0002bf    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                FUE_TIMR0   0x000015    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                FUE_TIMR1   0x00001b    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                FUE_TIMR2   0x000021    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      ISR   0x000008    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     LOOP   0x000212    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     MOT1   0x00023d    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     MOT2   0x000247    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               NUM_TO_PWM   0x000224    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    START   0x000200    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+          _MAIN_PROG_022A   0x00022a    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+          _MAIN_PROG_022F   0x00022f    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+          _MAIN_PROG_0237   0x000237    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                       N1   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                       N2   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      NUM   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     NUM2   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      QUO   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     QUO1   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+              STATUS_TEMP   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                   W_TEMP   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     XQUO   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    XQUO1   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     YQUO   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    YQUO1   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      ISR   0x000008    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                FUE_TIMR0   0x000015    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                FUE_TIMR1   0x00001b    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                FUE_TIMR2   0x000021    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    START   0x000200    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     LOOP   0x000212    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                  CHANGE1   0x000218    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                  CHANGE2   0x00021e    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               NUM_TO_PWM   0x000224    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+          _MAIN_PROG_022A   0x00022a    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                 CONVERT1   0x00022d    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+          _MAIN_PROG_022F   0x00022f    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                 CONVERT2   0x000235    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+          _MAIN_PROG_0237   0x000237    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               CONFIG_PWM   0x00023d    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     MOT1   0x00023d    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     MOT2   0x000247    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               CONFIG_OSC   0x000250    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+               CONFIG_ADC   0x000255    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+              CONFIG_FLAG   0x000266    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+            CONFIG_TIMER0   0x000274    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+            CONFIG_TIMER1   0x000281    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+            CONFIG_TIMER2   0x00028f    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                CONFIG_IO   0x00029c    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    DELAY   0x0002bf    program     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                       N1   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                       N2   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      NUM   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     NUM2   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                      QUO   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     QUO1   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     XQUO   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    XQUO1   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                     YQUO   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                    YQUO1   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+                   W_TEMP   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+              STATUS_TEMP   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\lab8.X\lab_8.asm
+
+

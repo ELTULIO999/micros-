@@ -1,0 +1,76 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Tue Nov 10 20:30:54 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                MAIN_PROG       code   0x000100    program   0x0001ce
+.config_2007_BUILD/DEFAULT/PRODUCTION/LAB_9.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/LAB_9.O       code   0x002008    program   0x000002
+                  GPR_VAR      udata   0x000020       data   0x000003
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000100    0x0001e6      
+                            0x002007    0x002008      
+            236 out of 8455 program addresses used, program memory utilization is 2%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+              CONFIG_FLAG   0x000184    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                CONFIG_IO   0x0001ba    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+            CONFIG_TIMER0   0x000192    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+            CONFIG_TIMER1   0x00019f    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+            CONFIG_TIMER2   0x0001ad    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+               CONFUG_ADC   0x000173    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+               CONFUG_OSC   0x00016e    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                     LOOP   0x00010c    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                   R2_MEM   0x00015d    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                    R_MEM   0x00014f    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+           SAVE_THAT_SHIT   0x000114    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                   W2_MEM   0x000136    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                    W_MEM   0x00011e    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+          _MAIN_PROG_010E   0x00010e    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+          _MAIN_PROG_0119   0x000119    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+          _MAIN_PROG_012A   0x00012a    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                     CONT   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+              STATUS_TEMP   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                   W_TEMP   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                     LOOP   0x00010c    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+          _MAIN_PROG_010E   0x00010e    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+           SAVE_THAT_SHIT   0x000114    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+          _MAIN_PROG_0119   0x000119    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                    W_MEM   0x00011e    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+          _MAIN_PROG_012A   0x00012a    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                   W2_MEM   0x000136    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                    R_MEM   0x00014f    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                   R2_MEM   0x00015d    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+               CONFUG_OSC   0x00016e    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+               CONFUG_ADC   0x000173    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+              CONFIG_FLAG   0x000184    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+            CONFIG_TIMER0   0x000192    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+            CONFIG_TIMER1   0x00019f    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+            CONFIG_TIMER2   0x0001ad    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                CONFIG_IO   0x0001ba    program     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                     CONT   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+                   W_TEMP   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+              STATUS_TEMP   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\ultimo_lab.X\lab_9.asm
+
+

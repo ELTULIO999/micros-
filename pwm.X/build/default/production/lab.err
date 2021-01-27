@@ -1,0 +1,20 @@
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 23 : Found label after column 1. (GPR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 24 : Found label after column 1. (ADC_V2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 25 : Found label after column 1. (ADC_V)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 26 : Found label after column 1. (DELAY)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 28 : Found label after column 1. (RES_VECT)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 49 : Found label after column 1. (CONFIG_IO)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 52 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 56 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 59 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 80 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 96 : Found opcode in column 1. (RETURN)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 113 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 132 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 135 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PWM.X\LAB.ASM 146 : Found opcode in column 1. (RETURN)

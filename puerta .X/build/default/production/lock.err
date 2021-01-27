@@ -1,0 +1,77 @@
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 23 : Found label after column 1. (GPR_VAR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 25 : Found label after column 1. (N1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 26 : Found label after column 1. (N2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 27 : Found label after column 1. (NUM)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 28 : Found label after column 1. (NUM2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 29 : Found label after column 1. (QUO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 30 : Found label after column 1. (QUO1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 31 : Found label after column 1. (XQUO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 32 : Found label after column 1. (XQUO1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 33 : Found label after column 1. (YQUO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 34 : Found label after column 1. (YQUO1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 36 : Found label after column 1. (W_TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 37 : Found label after column 1. (STATUS_TEMP)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 44 : Found label after column 1. (RES_VECT)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 48 : Found label after column 1. (PUSH)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 53 : Found label after column 1. (ISR)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 61 : Found label after column 1. (POP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 67 : Found opcode in column 1. (RETFIE)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 92 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 93 : Found opcode in column 1. (BCF)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 93 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 94 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 95 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 96 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 97 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 98 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 99 : Found opcode in column 1. (CALL)
+Warning[205] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 100 : Found directive in column 1. (BANKSEL)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 108 : Found opcode in column 1. (GOTO)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 119 : Found opcode in column 1. (GOTO)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 123 : Found label after column 1. (CHANGE1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 130 : Found label after column 1. (CHANGE2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 138 : Found label after column 1. (NUM_TO_PWM)
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 142 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 143 : Using default destination of 1 (file).
+Message[305] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 146 : Using default destination of 1 (file).
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 167 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 170 : Found label after column 1. (MOT1)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 180 : Found label after column 1. (MOT2)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 191 : Found label after column 1. (CONFIG_OSC)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 194 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 206 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 207 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 208 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 211 : Found opcode in column 1. (RETURN)
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 213 : Found label after column 1. (CONFIG_FLAG)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 218 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 219 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 227 : Found label after column 1. (CONFIG_TIMER0)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 229 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 230 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 231 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 232 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 233 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 253 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 262 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 266 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 273 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 277 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 278 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 279 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 280 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 283 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 288 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 293 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 298 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 299 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 300 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 301 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 302 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 303 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 304 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 305 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 306 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 307 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 308 : Found opcode in column 1. (RETURN)
+Warning[205] C:\USERS\JULIT\DOCUMENTS\GITHUB\MICROS-\PUERTA .X\LOCK.ASM 309 : Found directive in column 1. (END)

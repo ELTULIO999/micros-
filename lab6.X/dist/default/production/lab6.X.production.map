@@ -1,16 +1,16 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Thu Oct 01 15:34:47 2020
+Linker Map File - Created Wed Dec 23 17:12:29 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                  ISR_VEC       code   0x000004    program   0x000068
-                MAIN_PROG       code   0x000100    program   0x000168
+                  ISR_VEC       code   0x000004    program   0x000040
+                MAIN_PROG       code   0x000200    program   0x000186
 .config_2007_BUILD/DEFAULT/PRODUCTION/LAB_6.O       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/LAB_6.O       code   0x002008    program   0x000002
-                  GPR_VAR      udata   0x000020       data   0x000007
+                  GPR_VAR      udata   0x000020       data   0x00000c
 
 
 
@@ -18,49 +18,55 @@ Linker Map File - Created Thu Oct 01 15:34:47 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000037      
-                            0x000100    0x0001b3      
+                            0x000004    0x000023      
+                            0x000200    0x0002c2      
                             0x002007    0x002008      
-            237 out of 8455 program addresses used, program memory utilization is 2%
+            232 out of 8455 program addresses used, program memory utilization is 2%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                  CONFIG1   0x0001ab    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               CONFIG_ADC   0x000120    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-              CONFIG_FLAG   0x000141    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                CONFIG_IO   0x000177    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-            CONFIG_TIMER0   0x00014f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-            CONFIG_TIMER1   0x00015c    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-            CONFIG_TIMER2   0x00016a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               CONFUG_ADC   0x000120    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               CONFUG_OSC   0x00011b    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    DELAY   0x0001af    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                   DELAYM   0x0001a9    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-              DELAY_SMALL   0x0001a4    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               DISPLAY_D1   0x000131    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               DISPLAY_D2   0x00013a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                  CHANGE1   0x000213    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                  CHANGE2   0x000219    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               CONFIG_ADC   0x00024f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+              CONFIG_FLAG   0x000260    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                CONFIG_IO   0x000296    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               CONFIG_OSC   0x00024a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               CONFIG_PWM   0x000237    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+            CONFIG_TIMER0   0x00026e    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+            CONFIG_TIMER1   0x00027b    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+            CONFIG_TIMER2   0x000289    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                 CONVERT1   0x000228    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                 CONVERT2   0x00022f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    DELAY   0x0002b8    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
                 FUE_TIMR0   0x000015    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                FUE_TIMR1   0x00001d    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                FUE_TIMR2   0x000023    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                FUE_TIMR1   0x00001b    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                FUE_TIMR2   0x000021    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
                       ISR   0x000008    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                     LOOP   0x000112    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     LOOP   0x00020e    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     MOT1   0x000237    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     MOT2   0x000241    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               NUM_TO_PWM   0x00021f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
                       POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
                      PUSH   0x000004    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                  SEV_SEG   0x000027    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-          _MAIN_PROG_0115   0x000115    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-          _MAIN_PROG_01A7   0x0001a7    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-          _MAIN_PROG_01B3   0x0001b3    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                     CONT   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    CONT1   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    CONT2   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-              STATUS_TEMP   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                     TEMP   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    TEMP1   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                   W_TEMP   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    START   0x000200    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+          _MAIN_PROG_0225   0x000225    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+          _MAIN_PROG_022A   0x00022a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+          _MAIN_PROG_0231   0x000231    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                       N1   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                       N2   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                      NUM   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     NUM2   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                      QUO   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     QUO1   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+              STATUS_TEMP   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                   W_TEMP   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     XQUO   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    XQUO1   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     YQUO   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    YQUO1   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
 
 
 
@@ -71,34 +77,40 @@ Linker Map File - Created Thu Oct 01 15:34:47 2020
                       ISR   0x000008    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
                       POP   0x00000f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
                 FUE_TIMR0   0x000015    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                FUE_TIMR1   0x00001d    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                FUE_TIMR2   0x000023    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                  SEV_SEG   0x000027    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    START   0x000100    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                     LOOP   0x000112    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-          _MAIN_PROG_0115   0x000115    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               CONFUG_OSC   0x00011b    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               CONFUG_ADC   0x000120    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               CONFIG_ADC   0x000120    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               DISPLAY_D1   0x000131    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-               DISPLAY_D2   0x00013a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-              CONFIG_FLAG   0x000141    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-            CONFIG_TIMER0   0x00014f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-            CONFIG_TIMER1   0x00015c    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-            CONFIG_TIMER2   0x00016a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                CONFIG_IO   0x000177    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-              DELAY_SMALL   0x0001a4    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-          _MAIN_PROG_01A7   0x0001a7    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                   DELAYM   0x0001a9    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                  CONFIG1   0x0001ab    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    DELAY   0x0001af    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-          _MAIN_PROG_01B3   0x0001b3    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                     CONT   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    CONT1   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    CONT2   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                     TEMP   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                    TEMP1   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-                   W_TEMP   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
-              STATUS_TEMP   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                FUE_TIMR1   0x00001b    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                FUE_TIMR2   0x000021    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    START   0x000200    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     LOOP   0x00020e    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                  CHANGE1   0x000213    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                  CHANGE2   0x000219    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               NUM_TO_PWM   0x00021f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+          _MAIN_PROG_0225   0x000225    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                 CONVERT1   0x000228    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+          _MAIN_PROG_022A   0x00022a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                 CONVERT2   0x00022f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+          _MAIN_PROG_0231   0x000231    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               CONFIG_PWM   0x000237    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     MOT1   0x000237    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     MOT2   0x000241    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               CONFIG_OSC   0x00024a    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+               CONFIG_ADC   0x00024f    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+              CONFIG_FLAG   0x000260    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+            CONFIG_TIMER0   0x00026e    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+            CONFIG_TIMER1   0x00027b    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+            CONFIG_TIMER2   0x000289    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                CONFIG_IO   0x000296    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    DELAY   0x0002b8    program     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                       N1   0x000020       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                       N2   0x000021       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                      NUM   0x000022       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     NUM2   0x000023       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                      QUO   0x000024       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     QUO1   0x000025       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     XQUO   0x000026       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    XQUO1   0x000027       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                     YQUO   0x000028       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                    YQUO1   0x000029       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+                   W_TEMP   0x00002a       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
+              STATUS_TEMP   0x00002b       data     static C:\Users\julit\Documents\GitHub\micros-\lab6.X\lab_6.asm
 
 
